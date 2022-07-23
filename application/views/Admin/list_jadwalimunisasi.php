@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">Imunisasi</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -59,47 +59,61 @@
                 <!-- Sales Cards  -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <div style="height: 150px;" class="box bg-success text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-school"></i></h1>
-                                <h6 class="text-white">Jumlah Posyandu : Aktif </h6>
-                                <h2 class="text-white">12</h2>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-header" style="background:#2980b9; color:#fff;">Jenis Imunisasi</h5><br>
+                                <div class="form-gruop">
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <div style="height: 150px;" class="box bg-danger text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-account-multiple"></i></h1>
-                                <h6 class="text-white">Jumlah Anggota Posyandu : Non-Aktif</h6>
-                                <h2 class="text-white">12</h2>
+                                    <div class="text-right">
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <div style="height: 150px;" class="box bg-cyan text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-account"></i></h1>
-                                <h6 class="text-white">Jumlah Bidan</h6>
-                                <h2 class="text-white">12</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-
-                    <!-- Column -->
-
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <div style="height: 150px;" class="box bg-warning text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-account-multiple"></i></h1>
-                                <h6 class="text-white">Jumlah Jadwal Imunisasi</h6>
-                                <h2 class="text-white">21</h2>
-
+                                        <!-- <h7><strong> Posisi di sekolah </strong></h7> &nbsp;
+                                        <input> &nbsp; &nbsp; &nbsp; &nbsp; -->
+                                        <!-- Button trigger modal -->
+                                        <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+                                            Tambah Pengguna
+                                        </button> -->
+                                    </div>
+                                </div><br>
+                                <div class="table-responsive">
+                                    <table id="zero_config" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th><b>No</b></th>
+                                                <th><b>Tanggal Imunisasi</b></th>
+                                                <th><b>Nama Posyandu</b></th>
+                                                <th><b>Penanggung Jawab</b></th>
+                                                <th><b>Nama Imunisasi</b></th>
+                                                <th><b>Nama Bidan</b></th>
+                                                <th><b>Alamat Posyandu</b></th>
+                                                <th><b>Aksi</b></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+											$no = 1;
+											foreach ($jadwalimunisasi as $i) : ?>
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= date('d-m-Y',strtotime($i->tgl_imunisasi)) ?></td>
+                                                <td><?= $i->nama_posyandu ?></td>
+                                                <td><?= $i->penanggung_jawab ?></td>
+                                                <td><?= $i->nama_vaksin ?></td>
+                                                <td><?= $i->nama ?></td>
+                                                <td><?= $i->alamat_posyandu ?></td>
+                                                <td>
+                                                    <a type="button"
+                                                        href="<?= base_url('Admin/deleteJadwalImunisasi/' . $i->id);   ?>"
+                                                        onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Hapus Data"
+                                                        class="mdi mdi-24px mdi-delete"></a>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -58,7 +58,7 @@
                 <!-- ============================================================== -->
                 <!-- Sales Cards  -->
                 <!-- ============================================================== -->
-				<div class="row">
+                <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
@@ -81,24 +81,30 @@
                                             <tr>
                                                 <th><b>No</b></th>
                                                 <th><b>Nama Posyandu</b></th>
+                                                <th><b>Alamat</b></th>
                                                 <th><b>Penanggung Jawab</b></th>
                                                 <th><b>Keterangan</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-										<?php
+                                            <?php
                                             $no = 1;
                                             foreach ($posyandu as $p) : ?>
-                                                <tr>
-                                                    <td><?= $no++; ?></td>
-                                                    <td><?= $p->nama_posyandu ?></td>
-                                                    <td><?= $p->penanggung_jawab ?></td>
-                                                    <td><?= $p->keterangan ?></td>
-													<td>
-                                                        <a type="button" href="<?= base_url('Akun/hapusAkun/'. $p->id);   ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
-                                                    </td>
-                                                </tr>
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $p->nama_posyandu ?></td>
+                                                <td><?= $p->alamat_posyandu ?></td>
+                                                <td><?= $p->penanggung_jawab ?></td>
+                                                <td><?= $p->keterangan ?></td>
+                                                <td>
+                                                    <a type="button"
+                                                        href="<?= base_url('Admin/deletePosyandu/'. $p->id);   ?>"
+                                                        onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
+                                                </td>
+                                            </tr>
                                             <?php endforeach; ?>
                                         </tbody>
                                         </tbody>
@@ -111,7 +117,7 @@
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                 <!-- ============================================================== -->
-             
+
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                 <!-- ============================================================== -->
@@ -123,7 +129,7 @@
                 <!-- Recent comment and chats -->
                 <!-- ============================================================== -->
             </div>
-           
+
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -131,7 +137,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                COPYRIGHT © BIKEA TECHNOCRAFT 2019
+                COPYRIGHT © 2022
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -170,9 +176,8 @@
     <script src="<?= base_url() ?>assets/libs/flot/jquery.flot.crosshair.js"></script>
     <script src="<?= base_url() ?>assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="<?= base_url() ?>assets/dist/js/pages/chart/chart-page-init.js"></script>
- 
+
 
 </body>
 
 </html>
-

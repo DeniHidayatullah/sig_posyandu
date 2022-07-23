@@ -11256,22 +11256,22 @@ html[dir=ltr] body .p-l-0 {
 #main-wrapper {}
 
 #main-wrapper .topbar .top-navbar .navbar-header[data-logobg=skin5] {
-    background: #1F262D
+    background: #ffc107
 }
 
 #main-wrapper .topbar .navbar-collapse[data-navbarbg=skin5],
 #main-wrapper .topbar[data-navbarbg=skin5] {
-    background: #1F262D
+    background: #ffc107
 }
 
 #main-wrapper .left-sidebar[data-sidebarbg=skin5],
 #main-wrapper .left-sidebar[data-sidebarbg=skin5] ul {
-    background: #1F262D
+    background: #ffc107
 }
 
 #main-wrapper .left-sidebar[data-sidebarbg=skin5] .create-btn,
 #main-wrapper .left-sidebar[data-sidebarbg=skin5] ul .create-btn {
-    background: #27a9e3
+    background: #ffc107
 }
 
 #main-wrapper {
@@ -12030,7 +12030,7 @@ ul.list-style-none li a:hover {
 }
 
 #navbarSupportedContent {
-    background: #141619 !important
+    background: #ffc107 !important
 }
 
 .search-box .app-search {
@@ -12239,7 +12239,7 @@ ul.list-style-none li a:hover {
     -ms-flex-align: center;
     align-items: center;
     line-height: 25px;
-    opacity: 0.6
+    /* opacity: 0.6 */
 }
 
 .sidebar-nav ul .sidebar-item .sidebar-link i {
@@ -12291,7 +12291,7 @@ ul.list-style-none li a:hover {
     line-height: 30px;
     margin-top: 10px;
     color: #fff;
-    opacity: 0.3;
+    /* opacity: 0.3; */
     text-transform: uppercase
 }
 

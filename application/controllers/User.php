@@ -48,7 +48,7 @@ class User extends CI_Controller
         $this->load->view('User/index');
     }       
 
-    public function v_maps()
+    public function imunisasi()
     {
         $this->load->view('User/maps');
     }

@@ -13,17 +13,36 @@ class Auth extends CI_Controller
 
 	public function index()
 	{
+	// 	$earth_radius = 6371;
+
+	// $latitude1 = '-8.017045';
+	// $latitude2 = '-8.014802';
+	
+	// $longitude1 = '113.834451';
+	// $longitude2 = '113.829529';
+
+    // $dLat = deg2rad($latitude2 - $latitude1);
+    // $dLon = deg2rad($longitude2 - $longitude1);
+
+    // $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * sin($dLon/2) * sin($dLon/2);
+    // $c = 2 * asin(sqrt($a));
+    // $d = $earth_radius * $c;
+
+    // return $d;
+	// var_dump($d);
+	// die;
+
 		if ($this->session->userdata('status') == 'login') {
 			if ($this->session->userdata('role') == 'user') {
 				echo "<script>
                 alert('Anda sudah login sebagai User');
                 window.location.href = '" . base_url('User') . "';
             </script>"; //Url tujuan
-			} else if ($this->session->userdata('role') == 'bidan') {
-				echo "<script>
-                alert('Anda sudah login sebagai Bidan');
-                window.location.href = '" . base_url('Bidan') . "';
-            </script>"; //U
+			// } else if ($this->session->userdata('role') == 'bidan') {
+			// 	echo "<script>
+            //     alert('Anda sudah login sebagai Bidan');
+            //     window.location.href = '" . base_url('Bidan') . "';
+            // </script>"; //U
 			} else if ($this->session->userdata('role') == 'admin') {
 				echo "<script>
                 alert('Anda sudah login sebagai Admin');
@@ -51,11 +70,11 @@ class Auth extends CI_Controller
                 alert('Anda sudah login sebagai User');
                 window.location.href = '" . base_url('User') . "';
             </script>"; //Url tujuan
-			} else if ($this->session->userdata('role') == 'bidan') {
-				echo "<script>
-                alert('Anda sudah login sebagai Bidan');
-                window.location.href = '" . base_url('Bidan') . "';
-            </script>"; //U
+			// } else if ($this->session->userdata('role') == 'bidan') {
+			// 	echo "<script>
+            //     alert('Anda sudah login sebagai Bidan');
+            //     window.location.href = '" . base_url('Bidan') . "';
+            // </script>"; //U
 			} else if ($this->session->userdata('role') == 'admin') {
 				echo "<script>
                 alert('Anda sudah login sebagai Admin');
@@ -96,16 +115,16 @@ class Auth extends CI_Controller
 						);
 						$this->session->set_userdata($data_session);
 						redirect('User');
-					} else if ($user['role'] == 'bidan') {
-						$data_session = array(
-							'iduser' => $user['id'],
-							'email' => $user['email'],
-							'nama' => $user['nama'],
-							'role' => $user['role'],
-							'status' => 'login'
-						);
-						$this->session->set_userdata($data_session);
-						redirect('Bidan');
+					// } else if ($user['role'] == 'bidan') {
+					// 	$data_session = array(
+					// 		'iduser' => $user['id'],
+					// 		'email' => $user['email'],
+					// 		'nama' => $user['nama'],
+					// 		'role' => $user['role'],
+					// 		'status' => 'login'
+					// 	);
+					// 	$this->session->set_userdata($data_session);
+					// 	redirect('Bidan');
 					} else {
 						$data_session = array(
 							'iduser' => $user['id'],

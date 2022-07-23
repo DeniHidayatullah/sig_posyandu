@@ -58,48 +58,64 @@
                 <!-- ============================================================== -->
                 <!-- Sales Cards  -->
                 <!-- ============================================================== -->
-				<div class="row">
+                <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-header" style="background:#2980b9; color:#fff;">List Posyandu</h5><br>
                                 <div class="form-gruop">
-									<form action="<?php echo base_url('Admin/addPosyanduAction'); ?>" method="post" enctype="multipart/form-data">
-										<div class="form-group row">
-											<label for="fname" class="col-sm-4  control-label col-form-label">Nama Posyandu</label>
-											<div class="col-sm-8">
-												<input type="text" style="border-radius: 10px;" name="nama_posyandu" class="form-control" id="nama_posyandu" placeholder="Nama Posyandu" required>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="fname" class="col-sm-4  control-label col-form-label">Penanggung Jawab</label>
-											<div class="col-sm-8">
-												<input type="text" style="border-radius: 10px;" name="penanggung_jawab" class="form-control" id="penanggung_jawab" placeholder="Penanggung Jawab" required>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="fname" class="col-sm-4  control-label col-form-label">Alamat</label>
-											<div class="col-sm-8">
-												<input type="text" style="border-radius: 10px;" name="longitude" class="form-control" id="longitude" value="-12944" readonly required>
-												<input type="text" style="border-radius: 10px;" name="latitude" class="form-control" id="latitude" value="-12944" readonly required>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="fname" class="col-sm-4  control-label col-form-label">Keterangan</label>
-											<div class="col-sm-8">
-												<input type="text" style="border-radius: 10px;" name="keterangan" class="form-control" id="keterangan" value="-" required>
-											</div>
-										</div>
-										<div class="form-group row">
-											<div class="col-sm-5">
-											<button type="submit" class="btn btn-success" style="width: 80px;">save</button>
-											</div>
-										</div>
-										
-										
-									</form>
-								</div><br>
-                                
+                                    <form action="<?php echo base_url('Admin/addPosyanduAction'); ?>" method="post"
+                                        enctype="multipart/form-data">
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-4  control-label col-form-label">Nama
+                                                Posyandu</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" style="border-radius: 10px;" name="nama_posyandu"
+                                                    class="form-control" id="nama_posyandu" placeholder="Nama Posyandu"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-4  control-label col-form-label">Penanggung
+                                                Jawab</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" style="border-radius: 10px;" name="penanggung_jawab"
+                                                    class="form-control" id="penanggung_jawab"
+                                                    placeholder="Penanggung Jawab" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="fname"
+                                                class="col-sm-4  control-label col-form-label">Alamat</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" style="border-radius: 10px;" name="alamat_posyandu"
+                                                    class="form-control" id="alamat_posyandu"
+                                                    placeholder="Alamat Posyandu" required>
+                                                <input type="hidden" style="border-radius: 10px;" name="longitude"
+                                                    class="form-control" id="longitude" value="-12944" readonly>
+                                                <input type="hidden" style="border-radius: 10px;" name="latitude"
+                                                    class="form-control" id="latitude" value="-12944" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="fname"
+                                                class="col-sm-4  control-label col-form-label">Keterangan</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" style="border-radius: 10px;" name="keterangan"
+                                                    class="form-control" id="keterangan" value="-" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-5">
+                                                <button type="submit" class="btn btn-success"
+                                                    style="width: 80px;">save</button>
+                                            </div>
+                                        </div>
+
+
+                                    </form>
+                                </div><br>
+
                             </div>
                         </div>
                     </div>
@@ -107,7 +123,7 @@
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                 <!-- ============================================================== -->
-             
+
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                 <!-- ============================================================== -->
@@ -119,7 +135,7 @@
                 <!-- Recent comment and chats -->
                 <!-- ============================================================== -->
             </div>
-           
+
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -127,7 +143,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                COPYRIGHT © BIKEA TECHNOCRAFT 2019
+                COPYRIGHT © 2022
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -166,9 +182,8 @@
     <script src="<?= base_url() ?>assets/libs/flot/jquery.flot.crosshair.js"></script>
     <script src="<?= base_url() ?>assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="<?= base_url() ?>assets/dist/js/pages/chart/chart-page-init.js"></script>
- 
+
 
 </body>
 
 </html>
-

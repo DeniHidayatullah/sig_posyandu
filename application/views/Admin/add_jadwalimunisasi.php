@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">Imunisasi</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -59,46 +59,73 @@
                 <!-- Sales Cards  -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <div style="height: 150px;" class="box bg-success text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-school"></i></h1>
-                                <h6 class="text-white">Jumlah Posyandu : Aktif </h6>
-                                <h2 class="text-white">12</h2>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-header" style="background:#2980b9; color:#fff;">Jenis Imunisasi</h5><br>
+                                <div class="form-gruop">
+                                    <form action="<?php echo base_url('Admin/addJadwalImunisasiAction'); ?>"
+                                        method="post" enctype="multipart/form-data">
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <div style="height: 150px;" class="box bg-danger text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-account-multiple"></i></h1>
-                                <h6 class="text-white">Jumlah Anggota Posyandu : Non-Aktif</h6>
-                                <h2 class="text-white">12</h2>
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-2  control-label col-form-label">Tanggal
+                                                Imunisasi</label>
+                                            <div class="col-sm-8">
+                                                <input type="date" style="border-radius: 10px;" name="tgl_imunisasi"
+                                                    class="form-control" id="tgl_imunisasi"
+                                                    placeholder="Tanggal Imunisasi" required>
+                                            </div>
+                                        </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <div style="height: 150px;" class="box bg-cyan text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-account"></i></h1>
-                                <h6 class="text-white">Jumlah Bidan</h6>
-                                <h2 class="text-white">12</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 col-form-label">Nama Posyandu</label>
+                                            <div class="col-sm-8">
+                                                <select name="id_posyandu" id="id_posyandu" class="form-control">
+                                                    <option value="">--Pilih Posyandu--</option>
+                                                    <?php foreach ($posyandu as $c) : ?>
+                                                    <option value="<?= $c->id ?>"><?= $c->nama_posyandu ?>
+                                                    </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
 
-                    <!-- Column -->
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 col-form-label">Nama Bidan</label>
+                                            <div class="col-sm-8">
+                                                <select name="id_bidan" id="id_bidan" class="form-control">
+                                                    <option value="">--Pilih Bidan--</option>
+                                                    <?php foreach ($bidan as $c) : ?>
+                                                    <option value="<?= $c->id ?>"><?= $c->nama ?>
+                                                    </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
 
-                    <div class="col-md-6 col-lg-3 col-xlg-3">
-                        <div class="card card-hover">
-                            <div style="height: 150px;" class="box bg-warning text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-account-multiple"></i></h1>
-                                <h6 class="text-white">Jumlah Jadwal Imunisasi</h6>
-                                <h2 class="text-white">21</h2>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 col-form-label">Nama Vaksin</label>
+                                            <div class="col-sm-8">
+                                                <select name="id_imunisasi" id="id_imunisasi" class="form-control">
+                                                    <option value="">--Pilih Vaksin--</option>
+                                                    <?php foreach ($imunisasi as $c) : ?>
+                                                    <option value="<?= $c->id ?>"><?= $c->nama_vaksin ?>
+                                                    </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-5">
+                                                <button type="submit" class="btn btn-success"
+                                                    style="width: 80px;">save</button>
+                                            </div>
+                                        </div>
+
+
+                                    </form>
+                                </div><br>
 
                             </div>
                         </div>
