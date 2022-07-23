@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Imunisasi</h4>
+                        <h4 class="page-title">Tambah Imunisasi</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -62,32 +62,77 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">Jenis Imunisasi</h5><br>
                                 <div class="form-gruop">
                                     <form action="<?php echo base_url('Admin/addImunisasiAction'); ?>" method="post"
                                         enctype="multipart/form-data">
-                                        <div class="form-group row">
-                                            <label for="fname" class="col-sm-4  control-label col-form-label">Nama
-                                                Vaksin</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" style="border-radius: 10px;" name="nama_vaksin"
-                                                    class="form-control" id="nama_vaksin" placeholder="Nama Vaksin"
-                                                    required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="fname"
-                                                class="col-sm-4  control-label col-form-label">Umur</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" style="border-radius: 10px;" name="umur"
-                                                    class="form-control" id="umur" placeholder="Umur" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
 
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 col-form-label">Nama Balita</label>
+                                            <div class="col-sm-8">
+                                                <select name="id_balita" id="id_balita" class="form-control">
+                                                    <option value="">--Pilih Balita--</option>
+                                                    <?php foreach ($balita as $c) : ?>
+                                                    <option value="<?= $c->id ?>"><?= $c->nama_balita ?>
+                                                    </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 col-form-label">Nama Posyandu</label>
+                                            <div class="col-sm-8">
+                                                <select name="id_posyandu" id="id_posyandu" class="form-control">
+                                                    <option value="">--Pilih Posyandu--</option>
+                                                    <?php foreach ($posyandu as $c) : ?>
+                                                    <option value="<?= $c->id ?>"><?= $c->nama_posyandu ?>
+                                                    </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 col-form-label">Nama Bidan</label>
+                                            <div class="col-sm-8">
+                                                <select name="id_bidan" id="id_bidan" class="form-control">
+                                                    <option value="">--Pilih Bidan--</option>
+                                                    <?php foreach ($bidan as $c) : ?>
+                                                    <option value="<?= $c->id ?>"><?= $c->nama ?>
+                                                    </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 col-form-label">Nama Vaksin</label>
+                                            <div class="col-sm-8">
+                                                <select name="id_jenis_imunisasi" id="id_jenis_imunisasi"
+                                                    class="form-control">
+                                                    <option value="">--Pilih Vaksin--</option>
+                                                    <?php foreach ($jenisimunisasi as $c) : ?>
+                                                    <option value="<?= $c->id ?>"><?= $c->nama_vaksin ?>
+                                                    </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-2  control-label col-form-label">Tanggal
+                                                Imunisasi</label>
+                                            <div class="col-sm-8">
+                                                <input type="date" style="border-radius: 10px;" name="tgl_imunisasi"
+                                                    class="form-control" id="tgl_imunisasi"
+                                                    placeholder="Tanggal Imunisasi" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <button type="submit" class="btn btn-success"
-                                                    style="width: 80px;">save</button>
+                                                    style="width: 80px;">Simpan</button>
                                             </div>
                                         </div>
 

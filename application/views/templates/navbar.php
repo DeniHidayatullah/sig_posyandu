@@ -101,7 +101,7 @@
             <ul id="sidebarnav" class="p-t-30">
                 <?php if ($this->session->userdata('role') == 'user') { ?>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-light sidebar-link"
-                        href="<?= base_url() ?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                        href="<?= base_url() ?>User" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu">Dashboard</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="<?= base_url() ?>User/imunisasi" aria-expanded="false"><i
@@ -129,61 +129,44 @@
                 <?php } else { ?>
 
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="<?= base_url() ?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                        href="<?= base_url() ?>Admin" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu">Dashboard</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
-                        href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-home"></i><span
-                            class="hide-menu">Data Posyandu</span></a>
-                    <ul aria-expanded="false" class="collapse first-level">
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/listPosyandu" class="sidebar-link"><i
-                                    class="mdi mdi-home-modern"></i><span class="hide-menu">Daftar Posyandu</span></a>
-                        </li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/addPosyandu" class="sidebar-link"><i
-                                    class="mdi mdi-plus"></i><span class="hide-menu">Tambah Posyandu</span></a></li>
-                    </ul>
-                </li>
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
-                        href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span
-                            class="hide-menu">Data Bidan</span></a>
-                    <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/listBidan" class="sidebar-link"><i
-                                    class="mdi mdi-account"></i><span class="hide-menu">Daftar
-                                    Bidan</span></a></li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/addBidan" class="sidebar-link"><i
-                                    class="mdi mdi-plus"></i><span class="hide-menu">Tambah Bidan</span></a></li>
-                    </ul>
-                </li>
+
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        href="<?= base_url() ?>Admin/listPosyandu" aria-expanded="false"><i
+                            class="mdi mdi-home-modern"></i><span class="hide-menu">Data Posyandu</span></a></li>
+
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        href="<?= base_url() ?>Admin/listBidan" aria-expanded="false"><i
+                            class="mdi mdi-account"></i><span class="hide-menu">Data Bidan</span></a></li>
+
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        href="<?= base_url() ?>Admin/listBalita" aria-expanded="false"><i
+                            class="mdi mdi-account-settings"></i><span class="hide-menu">Data Balita</span></a></li>
+
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
                         href="javascript:void(0)" aria-expanded="false"><i
-                            class="mdi mdi-plus-circle-multiple-outline"></i><span class="hide-menu">Jenis
+                            class="mdi mdi-plus-circle-multiple-outline"></i><span class="hide-menu">
                             Imunisasi</span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/listJenisImunisasi"
+                                class="sidebar-link"><i class="mdi mdi-plus-circle"></i><span class="hide-menu">Jenis
+                                    Imunisasi</span></a></li>
                         <li class="sidebar-item"><a href="<?= base_url() ?>Admin/listImunisasi" class="sidebar-link"><i
-                                    class="mdi mdi-plus-box"></i><span class="hide-menu">Daftar Jenis
-                                    Imunisasi</span></a></li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/addImunisasi" class="sidebar-link"><i
-                                    class="mdi mdi-plus"></i><span class="hide-menu">Tambah Jenis
+                                    class="mdi mdi-table-column-plus-before"></i><span class="hide-menu">Data
                                     Imunisasi</span></a></li>
                     </ul>
                 </li>
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
-                        href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-table"></i><span
-                            class="hide-menu">Jadwal Imunisasi</span></a>
-                    <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/listJadwalImunisasi"
-                                class="sidebar-link"><i class="mdi mdi-table-column-plus-after"></i><span
-                                    class="hide-menu">Daftar Jadwal
-                                    Imunisasi</span></a></li>
-                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/addJadwalImunisasi"
-                                class="sidebar-link"><i class="mdi mdi-plus"></i><span class="hide-menu">Tambah Jadwal
-                                    Imunisasi</span></a></li>
 
-                    </ul>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        href="<?= base_url() ?>Admin/listJadwalImunisasi" aria-expanded="false"><i
+                            class="mdi mdi-table"></i><span class="hide-menu">Jadwal Imunisasi</span></a>
                 </li>
-                <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="<?= base_url('Admin/listUser'); ?>" aria-expanded="false"><i
                             class="mdi mdi-contacts"></i><span class="hide-menu">Data User</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                <!-- <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
                         href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-pen"></i><span
                             class="hide-menu">Laporan</span></a>
                     <ul aria-expanded="false" class="collapse  first-level">

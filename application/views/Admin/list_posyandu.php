@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Posyandu</h4>
+                        <h4 class="page-title">Data Posyandu</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -62,17 +62,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Posyandu</h5><br>
                                 <div class="form-gruop">
-
-                                    <div class="text-right">
-
-                                        <!-- <h7><strong> Posisi di sekolah </strong></h7> &nbsp;
-                                        <input> &nbsp; &nbsp; &nbsp; &nbsp; -->
-                                        <!-- Button trigger modal -->
-                                        <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                                            Tambah Pengguna
-                                        </button> -->
+                                    <div class="text-left">
+                                        <a href="<?php echo base_url() . 'Admin/addBidan' ?>" class="btn btn-success"><i
+                                                class="fas fa-plus fa-sm text-white"></i>
+                                            Tambah Posyandu</a>
                                     </div>
                                 </div><br>
                                 <div class="table-responsive">

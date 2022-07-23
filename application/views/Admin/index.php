@@ -63,9 +63,9 @@
                     <div class="col-md-6 col-lg-3 col-xlg-3">
                         <div class="card card-hover">
                             <div style="height: 150px;" class="box bg-success text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-school"></i></h1>
-                                <h6 class="text-white">Jumlah Posyandu : Aktif </h6>
-                                <h2 class="text-white">12</h2>
+                                <h1 class="font-light text-white"><i class="mdi mdi-home-modern"></i></h1>
+                                <h6 class="text-white">Jumlah Posyandu</h6>
+                                <h2 class="text-white"><?= $jumlahposyandu->jumlah?></h2>
 
                             </div>
                         </div>
@@ -73,9 +73,9 @@
                     <div class="col-md-6 col-lg-3 col-xlg-3">
                         <div class="card card-hover">
                             <div style="height: 150px;" class="box bg-danger text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-account-multiple"></i></h1>
-                                <h6 class="text-white">Jumlah Anggota Posyandu : Non-Aktif</h6>
-                                <h2 class="text-white">12</h2>
+                                <h1 class="font-light text-white"><i class="mdi mdi-plus-circle"></i></h1>
+                                <h6 class="text-white">Jumlah Jenis Imunisasi</h6>
+                                <h2 class="text-white"><?= $jumlahjenisimunisasi->jumlah?></h2>
 
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                             <div style="height: 150px;" class="box bg-cyan text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-account"></i></h1>
                                 <h6 class="text-white">Jumlah Bidan</h6>
-                                <h2 class="text-white">12</h2>
+                                <h2 class="text-white"><?= $jumlahbidan->jumlah?></h2>
                             </div>
                         </div>
                     </div>
@@ -96,9 +96,9 @@
                     <div class="col-md-6 col-lg-3 col-xlg-3">
                         <div class="card card-hover">
                             <div style="height: 150px;" class="box bg-warning text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-account-multiple"></i></h1>
+                                <h1 class="font-light text-white"><i class="mdi mdi-table"></i></h1>
                                 <h6 class="text-white">Jumlah Jadwal Imunisasi</h6>
-                                <h2 class="text-white">21</h2>
+                                <h2 class="text-white"><?= $jumlahjadwalimunisasi->jumlah?></h2>
 
                             </div>
                         </div>

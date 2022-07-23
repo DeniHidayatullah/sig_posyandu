@@ -49,7 +49,7 @@
                                 <input type="text" class="form-control form-control-lg" id="email" name="email"
                                     placeholder="Masukan Email..." value="<?= set_value('email'); ?>">
                             </div>
-                            <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-success text-white" id="basic-addon1"><i
@@ -59,6 +59,15 @@
                                     value="<?= set_value('alamat'); ?>" placeholder="Masukan Alamat..."></textarea>
                             </div>
                             <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-success text-white" id="basic-addon1"><i
+                                            class="fas fa-phone"></i></span>
+                                </div>
+                                <input type="text" class="form-control form-control-lg" id="no_telp" name="no_telp"
+                                    value="<?= set_value('no_telp'); ?>" placeholder="Masukan No Telpon...">
+                            </div>
+                            <?= form_error('no_telp', '<small class="text-danger pl-3">', '</small>'); ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-warning text-white" id="basic-addon2"><i

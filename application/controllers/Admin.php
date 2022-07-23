@@ -37,7 +37,12 @@ class Admin extends CI_Controller
         // $this->load->helper('tgl_indo');
         // $waktu = date('Y-m-d');
         // $data['waktu'] = formatHariTanggal($waktu);
-        $this->load->view('Admin/index');
+		
+		$data['jumlahjadwalimunisasi'] = $this->db->query("SELECT count(id) as jumlah FROM jadwal_imunisasi")->row();
+		$data['jumlahjenisimunisasi'] = $this->db->query("SELECT count(id) as jumlah FROM jenis_imunisasi")->row();
+		$data['jumlahposyandu'] = $this->db->query("SELECT count(id) as jumlah FROM posyandu")->row();
+		$data['jumlahbidan'] = $this->db->query("SELECT  count(id) as jumlah FROM user WHERE role='bidan'")->row();
+        $this->load->view('Admin/index', $data);
     } 
 
 	//Bidan
@@ -66,36 +71,36 @@ class Admin extends CI_Controller
 		$this->db->insert('user', $data);
 		redirect('Admin/listBidan');
 	}
-	// public function is_active(){
-	// 	$id = $this->uri->segment(3);
-	// 	$url = $this->uri->segment(4);
-	// 	$this->db->select('is_active');
-	// 	$this->db->set('is_active', 0);
-	// 	$this->db->where('id', $id);
-	// 	$this->db->update('user');
-	// 	if($url == 'bidan'){
-	// 		redirect('Admin/listBidan');
-	// 	}else{
-	// 		redirect('Admin/listUser');
-	// 	}
-	// }
-	// public function is_deactive(){
-	// 	$id = $this->uri->segment(3);
-	// 	$url = $this->uri->segment(4);
-	// 	$this->db->select('is_active');
-	// 	$this->db->set('is_active', 1);
-	// 	$this->db->where('id', $id);
-	// 	$this->db->update('user');
-	// 	if($url == 'bidan'){
-	// 		redirect('Admin/listBidan');
-	// 	}else{
-	// 		redirect('Admin/listUser');
-	// 	}
-	// }
 	public function deleteBidan(){
 		$id = $this->uri->segment(3);
 		$this->db->delete('user', array('id' => $id));
 		redirect('Admin/listBidan');
+	}
+
+
+	//Balita
+	public function listBalita(){
+		$data['balita'] = $this->db->query("SELECT * FROM balita")->result();
+		$this->load->view('Admin/list_balita',$data);
+	}
+	public function addBalita(){
+		$this->load->view('Admin/add_balita');
+	}
+	public function addBalitaAction(){
+		$data = [
+			'nama_balita' => htmlspecialchars($this->input->post('nama_balita')),
+			'jk_balita' => htmlspecialchars($this->input->post('jk_balita')),
+			'tempat_lahir_balita' => htmlspecialchars($this->input->post('tempat_lahir_balita')),
+			'tanggal_lahir_balita' => htmlspecialchars($this->input->post('tanggal_lahir_balita')),
+			'alamat_balita' => htmlspecialchars($this->input->post('alamat_balita'))
+		];
+		$this->db->insert('balita', $data);
+		redirect('Admin/listBalita');
+	}
+	public function deleteBalita(){
+		$id = $this->uri->segment(3);
+		$this->db->delete('balita', array('id' => $id));
+		redirect('Admin/listBalita');
 	}
 
 	//Posyandu
@@ -124,35 +129,63 @@ class Admin extends CI_Controller
 		redirect('Admin/listPosyandu');
 	}
 
-	//Imunisasi
-	public function addImunisasi(){
-		$this->load->view('Admin/add_imunisasi');
+	//Jenis Imunisasi
+	public function listJenisImunisasi(){
+		$data['jenisimunisasi'] = $this->db->query("SELECT * FROM jenis_imunisasi")->result();
+		$this->load->view('Admin/list_jenisimunisasi', $data);
 	}
-	public function listImunisasi(){
-		$data['imunisasi'] = $this->db->query("SELECT * FROM imunisasi")->result();
-		$this->load->view('Admin/list_imunisasi', $data);
+	public function addJenisImunisasi(){
+		$this->load->view('Admin/add_jenisimunisasi');
 	}
-	public function addImunisasiAction(){
+	public function addJenisImunisasiAction(){
 		$data = [
 			'nama_vaksin' => htmlspecialchars($this->input->post('nama_vaksin')),
 			'umur' => htmlspecialchars($this->input->post('umur'))
 		];
+		$this->db->insert('jenis_imunisasi', $data);
+		redirect('Admin/listJenisImunisasi');
+	}
+	public function deleteJenisImunisasi(){
+		$id = $this->uri->segment(3);
+		$this->db->delete('jenis_imunisasi', array('id' => $id));
+		redirect('Admin/listJenisImunisasi');
+	}
+
+	//Imunisasi
+	public function listImunisasi(){
+		$data['imunisasi'] = $this->db->query("SELECT a.id as idimunsasi, a.* ,b.*, c.*, d.*, e.* FROM imunisasi a join balita b on a.id_balita=b.id join user c on a.id_bidan=c.id join posyandu d on a.id_posyandu=d.id join jenis_imunisasi e on a.id_jenis_imunisasi=e.id")->result();
+		$this->load->view('Admin/list_imunisasi', $data);
+	}
+	public function addImunisasi(){
+		$data['balita'] = $this->db->query("SELECT * FROM balita")->result();
+		$data['jenisimunisasi'] = $this->db->query("SELECT * FROM jenis_imunisasi")->result();
+		$data['posyandu'] = $this->db->query("SELECT * FROM posyandu")->result();
+		$data['bidan'] = $this->db->query("SELECT * FROM user WHERE role='bidan'")->result();
+		$this->load->view('Admin/add_imunisasi', $data);
+	}
+	public function addImunisasiAction(){
+		$data = [
+			'tgl_imunisasi' => htmlspecialchars($this->input->post('tgl_imunisasi')),
+			'id_balita' => htmlspecialchars($this->input->post('id_balita')),
+			'id_posyandu' => htmlspecialchars($this->input->post('id_posyandu')),
+			'id_bidan' => htmlspecialchars($this->input->post('id_bidan')),
+			'id_jenis_imunisasi' => htmlspecialchars($this->input->post('id_jenis_imunisasi'))
+		];
 		$this->db->insert('imunisasi', $data);
 		redirect('Admin/listImunisasi');
 	}
-	public function deleteImunisasi(){
-		$id = $this->uri->segment(3);
+	public function deleteImunisasi($id ){
 		$this->db->delete('imunisasi', array('id' => $id));
 		redirect('Admin/listImunisasi');
 	}
 
 	//JadwalImunisasi
 	public function listJadwalImunisasi(){
-		$data['jadwalimunisasi'] = $this->db->query("SELECT * FROM jadwal_imunisasi a join imunisasi b on a.id_imunisasi=b.id join user c on a.id_bidan=c.id join posyandu d on a.id_posyandu=d.id")->result();
+		$data['jadwalimunisasi'] = $this->db->query("SELECT a.id as idjadwal, a.* , c.*, d.*, e.* FROM jadwal_imunisasi a join user c on a.id_bidan=c.id join posyandu d on a.id_posyandu=d.id join jenis_imunisasi e on a.id_jenis_imunisasi=e.id")->result();
 		$this->load->view('Admin/list_jadwalimunisasi', $data);
 	}
 	public function addJadwalImunisasi(){
-		$data['imunisasi'] = $this->db->query("SELECT * FROM imunisasi")->result();
+		$data['jenisimunisasi'] = $this->db->query("SELECT * FROM jenis_imunisasi")->result();
 		$data['posyandu'] = $this->db->query("SELECT * FROM posyandu")->result();
 		$data['bidan'] = $this->db->query("SELECT * FROM user WHERE role='bidan'")->result();
 		$this->load->view('Admin/add_jadwalimunisasi', $data);
@@ -160,15 +193,15 @@ class Admin extends CI_Controller
 	public function addJadwalImunisasiAction(){
 		$data = [
 			'tgl_imunisasi' => htmlspecialchars($this->input->post('tgl_imunisasi')),
+			'jam' => htmlspecialchars($this->input->post('jam')),
 			'id_posyandu' => htmlspecialchars($this->input->post('id_posyandu')),
 			'id_bidan' => htmlspecialchars($this->input->post('id_bidan')),
-			'id_imunisasi' => htmlspecialchars($this->input->post('id_imunisasi'))
+			'id_jenis_imunisasi' => htmlspecialchars($this->input->post('id_jenis_imunisasi'))
 		];
 		$this->db->insert('jadwal_imunisasi', $data);
 		redirect('Admin/listJadwalImunisasi');
 	}
-	public function deleteJadwalImunisasi(){
-		$id = $this->uri->segment(3);
+	public function deleteJadwalImunisasi($id){
 		$this->db->delete('jadwal_imunisasi', array('id' => $id));
 		redirect('Admin/listJadwalImunisasi');
 	}
@@ -176,6 +209,24 @@ class Admin extends CI_Controller
 	public function listUser(){
 		$data['user'] = $this->db->query("SELECT * FROM user WHERE role='user'")->result();
 		$this->load->view('Admin/list_user',$data);
+	}
+	public function deleteUser($id){
+		$this->db->delete('user', array('id' => $id));
+		redirect('Admin/listUser');
+	}
+	public function is_active($id){
+		$this->db->select('is_active');
+		$this->db->set('is_active', 0);
+		$this->db->where('id', $id);
+		$this->db->update('user');
+		redirect('Admin/listUser');
+	}
+	public function is_deactive($id){
+		$this->db->select('is_active');
+		$this->db->set('is_active', 1);
+		$this->db->where('id', $id);
+		$this->db->update('user');
+		redirect('Admin/listUser');
 	}
 
 }

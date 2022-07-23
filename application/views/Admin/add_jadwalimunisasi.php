@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Imunisasi</h4>
+                        <h4 class="page-title">Tambah Jadwal Imunisasi</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -62,7 +62,6 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">Jenis Imunisasi</h5><br>
                                 <div class="form-gruop">
                                     <form action="<?php echo base_url('Admin/addJadwalImunisasiAction'); ?>"
                                         method="post" enctype="multipart/form-data">
@@ -74,6 +73,16 @@
                                                 <input type="date" style="border-radius: 10px;" name="tgl_imunisasi"
                                                     class="form-control" id="tgl_imunisasi"
                                                     placeholder="Tanggal Imunisasi" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-2  control-label col-form-label">Waktu
+                                                Imunisasi</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" style="border-radius: 10px;" name="jam"
+                                                    class="form-control" id="jam"
+                                                    placeholder="Waktu Imunisasi contoh (18:00)" required>
                                             </div>
                                         </div>
 
@@ -106,9 +115,10 @@
                                         <div class="form-group row">
                                             <label for="" class="col-sm-2 col-form-label">Nama Vaksin</label>
                                             <div class="col-sm-8">
-                                                <select name="id_imunisasi" id="id_imunisasi" class="form-control">
+                                                <select name="id_jenis_imunisasi" id="id_jenis_imunisasi"
+                                                    class="form-control">
                                                     <option value="">--Pilih Vaksin--</option>
-                                                    <?php foreach ($imunisasi as $c) : ?>
+                                                    <?php foreach ($jenisimunisasi as $c) : ?>
                                                     <option value="<?= $c->id ?>"><?= $c->nama_vaksin ?>
                                                     </option>
                                                     <?php endforeach; ?>
@@ -119,7 +129,7 @@
                                         <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <button type="submit" class="btn btn-success"
-                                                    style="width: 80px;">save</button>
+                                                    style="width: 80px;">Simpan</button>
                                             </div>
                                         </div>
 

@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Data Bidan</h4>
+                        <h4 class="page-title">Data Jenis Imunisasi</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -64,9 +64,9 @@
                             <div class="card-body">
                                 <div class="form-gruop">
                                     <div class="text-left">
-                                        <a href="<?php echo base_url() . 'Admin/addBidan' ?>" class="btn btn-success"><i
-                                                class="fas fa-plus fa-sm text-white"></i>
-                                            Tambah Bidan</a>
+                                        <a href="<?php echo base_url() . 'Admin/addJenisImunisasi' ?>"
+                                            class="btn btn-success"><i class="fas fa-plus fa-sm text-white"></i>
+                                            Tambah Jenis Imunisasi</a>
                                     </div>
                                 </div><br>
                                 <div class="table-responsive">
@@ -74,29 +74,26 @@
                                         <thead>
                                             <tr>
                                                 <th><b>No</b></th>
-                                                <th><b>Nama Bidan</b></th>
-                                                <th><b>Alamat</b></th>
-                                                <th><b>No TLP</b></th>
-                                                <th><b>Email</b></th>
+                                                <th><b>Nama Vaksin</b></th>
+                                                <th><b>Umur</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
 											$no = 1;
-											foreach ($bidan as $b) : ?>
+											foreach ($jenisimunisasi as $i) : ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
-                                                <td><?= $b->nama ?></td>
-                                                <td><?= $b->alamat ?></td>
-                                                <td><?= $b->no_telp ?></td>
-                                                <td><?= $b->email ?></td>
+                                                <td><?= $i->nama_vaksin ?></td>
+                                                <td><?= $i->umur ?></td>
                                                 <td>
                                                     <a type="button"
-                                                        href="<?= base_url('Admin/deleteBidan/' . $b->id);   ?>"
+                                                        href="<?= base_url('Admin/deleteJenisImunisasi/' . $i->id);   ?>"
                                                         onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
-                                                        data-toggle="tooltip" data-placement="top" title="Hapus Data"
-                                                        data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Hapus Data"
+                                                        class="mdi mdi-24px mdi-delete"></a>
                                                 </td>
                                             </tr>
                                             <?php endforeach; ?>

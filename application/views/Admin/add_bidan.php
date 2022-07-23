@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Bidan</h4>
+                        <h4 class="page-title">Tambah Bidan</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -62,7 +62,6 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List Bidan</h5><br>
                                 <div class="form-gruop">
                                     <form action="<?php echo base_url('Admin/addBidanAction'); ?>" method="post"
                                         enctype="multipart/form-data">
@@ -131,7 +130,7 @@
 
                                             <div class="col-sm-5">
                                                 <button type="submit" class="btn btn-success"
-                                                    style="width: 80px;">save</button>
+                                                    style="width: 80px;">Simpan</button>
                                             </div>
                                         </div>
 

@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Imunisasi</h4>
+                        <h4 class="page-title">Data Jadwal Imunisasi</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -62,17 +62,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">Jenis Imunisasi</h5><br>
                                 <div class="form-gruop">
-
-                                    <div class="text-right">
-
-                                        <!-- <h7><strong> Posisi di sekolah </strong></h7> &nbsp;
-                                        <input> &nbsp; &nbsp; &nbsp; &nbsp; -->
-                                        <!-- Button trigger modal -->
-                                        <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                                            Tambah Pengguna
-                                        </button> -->
+                                    <div class="text-left">
+                                        <a href="<?php echo base_url() . 'Admin/addJadwalImunisasi' ?>"
+                                            class="btn btn-success"><i class="fas fa-plus fa-sm text-white"></i>
+                                            Tambah Jadwal Imunisasi</a>
                                     </div>
                                 </div><br>
                                 <div class="table-responsive">
@@ -81,6 +75,7 @@
                                             <tr>
                                                 <th><b>No</b></th>
                                                 <th><b>Tanggal Imunisasi</b></th>
+                                                <th><b>Waktu</b></th>
                                                 <th><b>Nama Posyandu</b></th>
                                                 <th><b>Penanggung Jawab</b></th>
                                                 <th><b>Nama Imunisasi</b></th>
@@ -96,6 +91,7 @@
                                             <tr>
                                                 <td><?= $no++; ?></td>
                                                 <td><?= date('d-m-Y',strtotime($i->tgl_imunisasi)) ?></td>
+                                                <td><?= $i->jam ?></td>
                                                 <td><?= $i->nama_posyandu ?></td>
                                                 <td><?= $i->penanggung_jawab ?></td>
                                                 <td><?= $i->nama_vaksin ?></td>
@@ -103,7 +99,7 @@
                                                 <td><?= $i->alamat_posyandu ?></td>
                                                 <td>
                                                     <a type="button"
-                                                        href="<?= base_url('Admin/deleteJadwalImunisasi/' . $i->id);   ?>"
+                                                        href="<?= base_url('Admin/deleteJadwalImunisasi/' . $i->idjadwal);   ?>"
                                                         onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
                                                         data-toggle="tooltip" data-placement="top" title=""
                                                         data-original-title="Hapus Data"

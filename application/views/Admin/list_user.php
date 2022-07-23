@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">User</h4>
+                        <h4 class="page-title">Data User</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -62,7 +62,6 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">List User</h5><br>
                                 <div class="form-gruop">
 
                                     <div class="text-right">
@@ -81,6 +80,9 @@
                                             <tr>
                                                 <th><b>No</b></th>
                                                 <th><b>Nama User</b></th>
+                                                <th><b>Alamat User</b></th>
+                                                <th><b>Email User</b></th>
+                                                <th><b>No Telp</b></th>
                                                 <th><b>Foto Ktp</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
@@ -92,6 +94,9 @@
                                             <tr>
                                                 <td><?= $no++; ?></td>
                                                 <td><?= $b->nama ?></td>
+                                                <td><?= $b->alamat ?></td>
+                                                <td><?= $b->email ?></td>
+                                                <td><?= $b->no_telp ?></td>
                                                 <td><img src="<?= base_url('assets/ktp/' . $b->foto_ktp) ?>"
                                                         width="100px" height="130px" alt=""></td>
                                                 <td>
@@ -99,7 +104,7 @@
                                                         href="<?= $b->is_active == 1 ?  base_url('Admin/is_active/'. $b->id.'/'. $b->role) : base_url('Admin/is_deactive/'. $b->id.'/'. $b->role)  ?>"
                                                         class="btn <?= $b->is_active == 1 ? 'btn-info' : 'btn-warning'  ?>"><?= $b->is_active == 1 ? 'Aktif' : 'Non-Aktif' ?></a>
                                                     <a type="button"
-                                                        href="<?= base_url('Admin/deleteBidan/' . $b->id);   ?>"
+                                                        href="<?= base_url('Admin/deleteUser/' . $b->id);   ?>"
                                                         onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
                                                         data-toggle="tooltip" data-placement="top" title=""
                                                         data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>

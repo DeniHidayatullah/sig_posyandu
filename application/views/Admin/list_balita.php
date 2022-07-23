@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Data Bidan</h4>
+                        <h4 class="page-title">Data Balita</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -64,9 +64,9 @@
                             <div class="card-body">
                                 <div class="form-gruop">
                                     <div class="text-left">
-                                        <a href="<?php echo base_url() . 'Admin/addBidan' ?>" class="btn btn-success"><i
-                                                class="fas fa-plus fa-sm text-white"></i>
-                                            Tambah Bidan</a>
+                                        <a href="<?php echo base_url() . 'Admin/addBalita' ?>"
+                                            class="btn btn-success"><i class="fas fa-plus fa-sm text-white"></i>
+                                            Tambah Balita</a>
                                     </div>
                                 </div><br>
                                 <div class="table-responsive">
@@ -74,26 +74,32 @@
                                         <thead>
                                             <tr>
                                                 <th><b>No</b></th>
-                                                <th><b>Nama Bidan</b></th>
+                                                <th><b>Nama Balita</b></th>
+                                                <th><b>Jenis Kelamin</b></th>
+                                                <th><b>Tempat Tanggal Lahir</b></th>
                                                 <th><b>Alamat</b></th>
-                                                <th><b>No TLP</b></th>
-                                                <th><b>Email</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
 											$no = 1;
-											foreach ($bidan as $b) : ?>
+											foreach ($balita as $b) : ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
-                                                <td><?= $b->nama ?></td>
-                                                <td><?= $b->alamat ?></td>
-                                                <td><?= $b->no_telp ?></td>
-                                                <td><?= $b->email ?></td>
+                                                <td><?= $b->nama_balita ?></td>
+                                                <td><?php 
+                                                if ($b->jk_balita = 'L'){
+                                                    echo 'Laki-Laki';
+                                                }elseif ($b->jk_balita = 'P'){
+                                                    echo 'Perempuan';
+                                                } ?></td>
+                                                <td><?= $b->tempat_lahir_balita.', '.date('d-m-Y',strtotime($b->tanggal_lahir_balita)) ?>
+                                                </td>
+                                                <td><?= $b->alamat_balita ?></td>
                                                 <td>
                                                     <a type="button"
-                                                        href="<?= base_url('Admin/deleteBidan/' . $b->id);   ?>"
+                                                        href="<?= base_url('Admin/deleteBalita/' . $b->id);   ?>"
                                                         onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
                                                         data-toggle="tooltip" data-placement="top" title="Hapus Data"
                                                         data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>

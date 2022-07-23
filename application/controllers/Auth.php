@@ -166,7 +166,8 @@ class Auth extends CI_Controller
 		]);
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
-		 var_dump($this->form_validation->run());
+		$this->form_validation->set_rules('no_telp', 'no_telp', 'required|trim');
+		//  var_dump($this->form_validation->run());
 
 
 		if ($this->form_validation->run() == false) {
@@ -181,6 +182,7 @@ class Auth extends CI_Controller
 				'email' => htmlspecialchars($email),
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'alamat' => $this->input->post('alamat', true),
+				'no_telp' => $this->input->post('no_telp', true),
 				'foto_ktp' => $this->_uploadImage(),
 				'longitude' => $this->input->post('longitude'),
 				'latitude' => $this->input->post('latitude'),
@@ -188,7 +190,7 @@ class Auth extends CI_Controller
 				'role' => 'user'
 			];
 			$this->db->insert('user', $data);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please activate your account</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Akun anda telah dibuat. Silakan Tunggu Admin Akan aktifkan akun Anda</div>');
 			redirect('Auth');
 		}
 	}

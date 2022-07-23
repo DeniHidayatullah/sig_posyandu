@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Imunisasi</h4>
+                        <h4 class="page-title">Data Imunisasi</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -62,17 +62,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-header" style="background:#2980b9; color:#fff;">Jenis Imunisasi</h5><br>
                                 <div class="form-gruop">
-
-                                    <div class="text-right">
-
-                                        <!-- <h7><strong> Posisi di sekolah </strong></h7> &nbsp;
-                                        <input> &nbsp; &nbsp; &nbsp; &nbsp; -->
-                                        <!-- Button trigger modal -->
-                                        <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                                            Tambah Pengguna
-                                        </button> -->
+                                    <div class="text-left">
+                                        <a href="<?php echo base_url() . 'Admin/addImunisasi' ?>"
+                                            class="btn btn-success"><i class="fas fa-plus fa-sm text-white"></i>
+                                            Tambah Imunisasi</a>
                                     </div>
                                 </div><br>
                                 <div class="table-responsive">
@@ -80,8 +74,12 @@
                                         <thead>
                                             <tr>
                                                 <th><b>No</b></th>
-                                                <th><b>Nama Vaksin</b></th>
-                                                <th><b>Umur</b></th>
+                                                <th><b>Nama Balita</b></th>
+                                                <th><b>TTL</b></th>
+                                                <th><b>Jenis Kelamin</b></th>
+                                                <th><b>Posyandu</b></th>
+                                                <th><b>Bidan</b></th>
+                                                <th><b>Jenis Imunisasi</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
                                         </thead>
@@ -91,11 +89,21 @@
 											foreach ($imunisasi as $i) : ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
+                                                <td><?= $i->nama_balita ?></td>
+                                                <td><?= $i->tempat_lahir_balita.', '.date('d-m-Y',strtotime($i->tanggal_lahir_balita)) ?>
+                                                </td>
+                                                <td><?php 
+                                                if ($i->jk_balita = 'L'){
+                                                    echo 'Laki-Laki';
+                                                }elseif ($i->jk_balita = 'P'){
+                                                    echo 'Perempuan';
+                                                } ?></td>
+                                                <td><?= $i->nama_posyandu ?></td>
+                                                <td><?= $i->nama ?></td>
                                                 <td><?= $i->nama_vaksin ?></td>
-                                                <td><?= $i->umur ?></td>
                                                 <td>
                                                     <a type="button"
-                                                        href="<?= base_url('Admin/deleteImunisasi/' . $i->id);   ?>"
+                                                        href="<?= base_url('Admin/deleteImunisasi/' . $i->idimunsasi);   ?>"
                                                         onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
                                                         data-toggle="tooltip" data-placement="top" title=""
                                                         data-original-title="Hapus Data"

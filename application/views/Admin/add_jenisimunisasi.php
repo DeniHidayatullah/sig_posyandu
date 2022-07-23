@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Data Bidan</h4>
+                        <h4 class="page-title">Tambah Jenis Imunisasi</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -63,46 +63,37 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-gruop">
-                                    <div class="text-left">
-                                        <a href="<?php echo base_url() . 'Admin/addBidan' ?>" class="btn btn-success"><i
-                                                class="fas fa-plus fa-sm text-white"></i>
-                                            Tambah Bidan</a>
-                                    </div>
+                                    <form action="<?php echo base_url('Admin/addJenisImunisasiAction'); ?>"
+                                        method="post" enctype="multipart/form-data">
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-4  control-label col-form-label">Nama
+                                                Vaksin</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" style="border-radius: 10px;" name="nama_vaksin"
+                                                    class="form-control" id="nama_vaksin" placeholder="Nama Vaksin"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="fname"
+                                                class="col-sm-4  control-label col-form-label">Umur</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" style="border-radius: 10px;" name="umur"
+                                                    class="form-control" id="umur" placeholder="Umur" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+
+                                            <div class="col-sm-5">
+                                                <button type="submit" class="btn btn-success"
+                                                    style="width: 80px;">Simpan</button>
+                                            </div>
+                                        </div>
+
+
+                                    </form>
                                 </div><br>
-                                <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th><b>No</b></th>
-                                                <th><b>Nama Bidan</b></th>
-                                                <th><b>Alamat</b></th>
-                                                <th><b>No TLP</b></th>
-                                                <th><b>Email</b></th>
-                                                <th><b>Aksi</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-											$no = 1;
-											foreach ($bidan as $b) : ?>
-                                            <tr>
-                                                <td><?= $no++; ?></td>
-                                                <td><?= $b->nama ?></td>
-                                                <td><?= $b->alamat ?></td>
-                                                <td><?= $b->no_telp ?></td>
-                                                <td><?= $b->email ?></td>
-                                                <td>
-                                                    <a type="button"
-                                                        href="<?= base_url('Admin/deleteBidan/' . $b->id);   ?>"
-                                                        onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
-                                                        data-toggle="tooltip" data-placement="top" title="Hapus Data"
-                                                        data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -130,7 +121,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                COPYRIGHT © BIKEA TECHNOCRAFT 2019
+                COPYRIGHT © 2022
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
