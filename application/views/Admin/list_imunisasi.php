@@ -93,15 +93,20 @@
                                                 <td><?= $i->tempat_lahir_balita.', '.date('d-m-Y',strtotime($i->tanggal_lahir_balita)) ?>
                                                 </td>
                                                 <td><?php 
-                                                if ($i->jk_balita = 'L'){
+                                                if ($i->jk_balita == 'L'){
                                                     echo 'Laki-Laki';
-                                                }elseif ($i->jk_balita = 'P'){
+                                                }elseif ($i->jk_balita == 'P'){
                                                     echo 'Perempuan';
                                                 } ?></td>
                                                 <td><?= $i->nama_posyandu ?></td>
                                                 <td><?= $i->nama ?></td>
                                                 <td><?= $i->nama_vaksin ?></td>
                                                 <td>
+                                                    <a type="button"
+                                                        href="<?= base_url('Admin/updateImunisasi/'. $i->idimunsasi);   ?>"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Edit Data"
+                                                        class="mdi mdi-24px mdi-pencil"></a>
                                                     <a type="button"
                                                         href="<?= base_url('Admin/deleteImunisasi/' . $i->idimunsasi);   ?>"
                                                         onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"

@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Data Bidan</h4>
+                        <h4 class="page-title">Laporan Data Imunisasi</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -63,45 +63,45 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-gruop">
-                                    <div class="text-left">
-                                        <a href="<?php echo base_url() . 'Admin/addBidan' ?>" class="btn btn-success"><i
-                                                class="fas fa-plus fa-sm text-white"></i>
-                                            Tambah Bidan</a>
-                                    </div>
                                 </div><br>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th><b>No</b></th>
-                                                <th><b>Nama Bidan</b></th>
-                                                <th><b>Alamat</b></th>
-                                                <th><b>No TLP</b></th>
-                                                <th><b>Email</b></th>
+                                                <th><b>Nama Balita</b></th>
+                                                <th><b>TTL</b></th>
+                                                <th><b>Jenis Kelamin</b></th>
+                                                <th><b>Posyandu</b></th>
+                                                <th><b>Bidan</b></th>
+                                                <th><b>Jenis Imunisasi</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
 											$no = 1;
-											foreach ($bidan as $b) : ?>
+											foreach ($imunisasi as $i) : ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
-                                                <td><?= $b->nama ?></td>
-                                                <td><?= $b->alamat ?></td>
-                                                <td><?= $b->no_telp ?></td>
-                                                <td><?= $b->email ?></td>
+                                                <td><?= $i->nama_balita ?></td>
+                                                <td><?= $i->tempat_lahir_balita.', '.date('d-m-Y',strtotime($i->tanggal_lahir_balita)) ?>
+                                                </td>
+                                                <td><?php 
+                                                if ($i->jk_balita == 'L'){
+                                                    echo 'Laki-Laki';
+                                                }elseif ($i->jk_balita == 'P'){
+                                                    echo 'Perempuan';
+                                                } ?></td>
+                                                <td><?= $i->nama_posyandu ?></td>
+                                                <td><?= $i->nama ?></td>
+                                                <td><?= $i->nama_vaksin ?></td>
                                                 <td>
                                                     <a type="button"
-                                                        href="<?= base_url('Admin/updateBidan/'. $b->id);   ?>"
+                                                        href="<?= base_url('Admin/cetek/'. $i->idimunsasi);   ?>"
                                                         data-toggle="tooltip" data-placement="top" title=""
-                                                        data-original-title="Edit Data"
-                                                        class="mdi mdi-24px mdi-pencil"></a>
-                                                    <a type="button"
-                                                        href="<?= base_url('Admin/deleteBidan/' . $b->id);   ?>"
-                                                        onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
-                                                        data-toggle="tooltip" data-placement="top" title="Hapus Data"
-                                                        data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
+                                                        data-original-title="Cetak Data"
+                                                        class="mdi mdi-24px mdi-printer"></a>
                                                 </td>
                                             </tr>
                                             <?php endforeach; ?>

@@ -97,14 +97,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="fname"
-                                                class="col-sm-4  control-label col-form-label">Keterangan</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" style="border-radius: 10px;" name="keterangan"
-                                                    class="form-control" id="keterangan" value="-" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <div class="col-sm-5">
                                                 <button type="submit" class="btn btn-success"
                                                     style="width: 80px;">Simpan</button>

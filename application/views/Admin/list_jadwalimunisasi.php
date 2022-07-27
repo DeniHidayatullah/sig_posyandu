@@ -99,6 +99,11 @@
                                                 <td><?= $i->alamat_posyandu ?></td>
                                                 <td>
                                                     <a type="button"
+                                                        href="<?= base_url('Admin/updateJadwalImunisasi/'. $i->idjadwal);   ?>"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Edit Data"
+                                                        class="mdi mdi-24px mdi-pencil"></a>
+                                                    <a type="button"
                                                         href="<?= base_url('Admin/deleteJadwalImunisasi/' . $i->idjadwal);   ?>"
                                                         onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
                                                         data-toggle="tooltip" data-placement="top" title=""

@@ -77,7 +77,6 @@
                                                 <th><b>Nama Posyandu</b></th>
                                                 <th><b>Alamat</b></th>
                                                 <th><b>Penanggung Jawab</b></th>
-                                                <th><b>Keterangan</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
                                         </thead>
@@ -90,13 +89,19 @@
                                                 <td><?= $p->nama_posyandu ?></td>
                                                 <td><?= $p->alamat_posyandu ?></td>
                                                 <td><?= $p->penanggung_jawab ?></td>
-                                                <td><?= $p->keterangan ?></td>
                                                 <td>
+                                                    <a type="button"
+                                                        href="<?= base_url('Admin/updatePosyandu/'. $p->id);   ?>"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Edit Data"
+                                                        class="mdi mdi-24px mdi-pencil"></a>
+
                                                     <a type="button"
                                                         href="<?= base_url('Admin/deletePosyandu/'. $p->id);   ?>"
                                                         onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
                                                         data-toggle="tooltip" data-placement="top" title=""
-                                                        data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
+                                                        data-original-title="Hapus"
+                                                        class="mdi mdi-24px mdi-delete "></a>
                                                 </td>
                                             </tr>
                                             <?php endforeach; ?>

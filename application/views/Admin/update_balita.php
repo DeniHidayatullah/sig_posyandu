@@ -42,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Data Bidan</h4>
+                        <h4 class="page-title">Edit Balita</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -63,51 +63,70 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-gruop">
-                                    <div class="text-left">
-                                        <a href="<?php echo base_url() . 'Admin/addBidan' ?>" class="btn btn-success"><i
-                                                class="fas fa-plus fa-sm text-white"></i>
-                                            Tambah Bidan</a>
-                                    </div>
+                                    <form action="<?php echo base_url('Admin/updateBalitaAction'); ?>" method="post"
+                                        enctype="multipart/form-data">
+                                        <input type="hidden" name="id" value="<?= $balita->id?>">
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-4  control-label col-form-label">Nama
+                                                Balita</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" style="border-radius: 10px;" name="nama_balita"
+                                                    class="form-control" id="nama_balita" placeholder="Nama Balita"
+                                                    value="<?= $balita->nama_balita?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-4  control-label col-form-label">Jenis
+                                                Kelamin</label>
+                                            <div class="col-sm-8">
+                                                <label>
+                                                    <input type="radio" name="jk_balita" id="jk_balita" value="L"
+                                                        <?php if($balita->jk_balita=='L') echo 'checked'?>>
+                                                    Laki-Laki
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="jk_balita" id="jk_balita" value="P"
+                                                        <?php if($balita->jk_balita=='P') echo 'checked'?>>
+                                                    Perempuan
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-4  control-label col-form-label">Tempat
+                                                Tanggal Lahir</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" style="border-radius: 10px;"
+                                                    name="tempat_lahir_balita" class="form-control"
+                                                    id="tempat_lahir_balita" placeholder="Tempat lahir"
+                                                    value="<?= $balita->tempat_lahir_balita?>" required>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="date" style="border-radius: 10px;"
+                                                    name="tanggal_lahir_balita" class="form-control"
+                                                    id="tanggal_lahir_balita" placeholder="Tanggal lahir"
+                                                    value="<?= $balita->tanggal_lahir_balita?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="fname"
+                                                class="col-sm-4  control-label col-form-label">Alamat</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" style="border-radius: 10px;" name="alamat_balita"
+                                                    class="form-control" id="alamat_balita" placeholder="Alamat"
+                                                    value="<?= $balita->alamat_balita?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-5">
+                                                <button type="submit" class="btn btn-success"
+                                                    style="width: 80px;">Simpan</button>
+                                            </div>
+                                        </div>
+
+
+                                    </form>
                                 </div><br>
-                                <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th><b>No</b></th>
-                                                <th><b>Nama Bidan</b></th>
-                                                <th><b>Alamat</b></th>
-                                                <th><b>No TLP</b></th>
-                                                <th><b>Email</b></th>
-                                                <th><b>Aksi</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-											$no = 1;
-											foreach ($bidan as $b) : ?>
-                                            <tr>
-                                                <td><?= $no++; ?></td>
-                                                <td><?= $b->nama ?></td>
-                                                <td><?= $b->alamat ?></td>
-                                                <td><?= $b->no_telp ?></td>
-                                                <td><?= $b->email ?></td>
-                                                <td>
-                                                    <a type="button"
-                                                        href="<?= base_url('Admin/updateBidan/'. $b->id);   ?>"
-                                                        data-toggle="tooltip" data-placement="top" title=""
-                                                        data-original-title="Edit Data"
-                                                        class="mdi mdi-24px mdi-pencil"></a>
-                                                    <a type="button"
-                                                        href="<?= base_url('Admin/deleteBidan/' . $b->id);   ?>"
-                                                        onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
-                                                        data-toggle="tooltip" data-placement="top" title="Hapus Data"
-                                                        data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -135,7 +154,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                COPYRIGHT © BIKEA TECHNOCRAFT 2019
+                COPYRIGHT © 2022
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

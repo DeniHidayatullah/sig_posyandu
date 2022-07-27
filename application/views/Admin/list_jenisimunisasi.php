@@ -89,6 +89,11 @@
                                                 <td><?= $i->umur ?></td>
                                                 <td>
                                                     <a type="button"
+                                                        href="<?= base_url('Admin/updateJenisImunisasi/'. $i->id);   ?>"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Edit Data"
+                                                        class="mdi mdi-24px mdi-pencil"></a>
+                                                    <a type="button"
                                                         href="<?= base_url('Admin/deleteJenisImunisasi/' . $i->id);   ?>"
                                                         onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
                                                         data-toggle="tooltip" data-placement="top" title=""

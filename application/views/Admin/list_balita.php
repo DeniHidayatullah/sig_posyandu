@@ -89,15 +89,21 @@
                                                 <td><?= $no++; ?></td>
                                                 <td><?= $b->nama_balita ?></td>
                                                 <td><?php 
-                                                if ($b->jk_balita = 'L'){
+                                                if ($b->jk_balita == 'L'){
                                                     echo 'Laki-Laki';
-                                                }elseif ($b->jk_balita = 'P'){
+                                                }elseif ($b->jk_balita == 'P'){
                                                     echo 'Perempuan';
                                                 } ?></td>
                                                 <td><?= $b->tempat_lahir_balita.', '.date('d-m-Y',strtotime($b->tanggal_lahir_balita)) ?>
                                                 </td>
                                                 <td><?= $b->alamat_balita ?></td>
                                                 <td>
+                                                    <a type="button"
+                                                        href="<?= base_url('Admin/updateBalita/'. $b->id);   ?>"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Edit Data"
+                                                        class="mdi mdi-24px mdi-pencil"></a>
+
                                                     <a type="button"
                                                         href="<?= base_url('Admin/deleteBalita/' . $b->id);   ?>"
                                                         onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"

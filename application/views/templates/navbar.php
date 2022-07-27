@@ -164,6 +164,11 @@
                 </li>
 
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        href="<?= base_url() ?>Admin/laporanImunisasi" aria-expanded="false"><i
+                            class="mdi mdi-printer"></i><span class="hide-menu">Laporan Imunisasi</span></a>
+                </li>
+
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="<?= base_url('Admin/listUser'); ?>" aria-expanded="false"><i
                             class="mdi mdi-contacts"></i><span class="hide-menu">Data User</span></a></li>
                 <!-- <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
