@@ -158,7 +158,6 @@
     });
 
     <?php foreach($titik as $key => $value) { ?>
-
     L.marker([<?= $value->latitude; ?>, <?= $value->longitude; ?>], {
             icon: new L.NumberedDivIcon({
                 number: '<?= $value->nama_simpul; ?>'
@@ -169,6 +168,25 @@
         )
         .addTo(map);
 
+    <?php } ?>
+
+    <?php foreach($rute as $key => $valuee) { ?>
+    // var routeControl = L.Routing.control({
+    //     waypoints: [
+    //         L.latLng(<?= $valuee->latawal; ?>, <?= $valuee->longawal; ?>),
+    //         L.latLng(<?= $valuee->lattujuan; ?>, <?= $valuee->longtujuan; ?>)
+    //     ],
+    //     routeWhileDragging: false,
+    // }).addTo(map);
+
+    var latlngs2 = [
+        L.latLng(<?= $valuee->latawal; ?>, <?= $valuee->longawal; ?>),
+        L.latLng(<?= $valuee->lattujuan; ?>, <?= $valuee->longtujuan; ?>)
+    ];
+
+    var polyline2 = L.polyline(latlngs2, {
+        color: 'blue'
+    }).bindPopup('<b>Jalur 2</b>').addTo(map);
     <?php } ?>
     </script>
 

@@ -19,4 +19,43 @@ class M_map extends CI_Model
 
         echo json_encode($json);
     }
+    public function get_all_data()
+    {
+        $this->db->select('*');
+        $this->db->from('titik_simpul');
+        return $this->db->get()->result();
+    }
+    public function get_all_rute()
+    {
+        $this->db->select('*');
+        $this->db->from('rute');
+        return $this->db->get()->result();
+    }
+    public function get_all_jarak()
+    {
+        $this->db->select('*');
+        $this->db->from('jarak');
+        return $this->db->get()->result_array();
+    }
+    public function get_all_kecamatan()
+    {
+        $this->db->select('*');
+        $this->db->from('kecamatan');
+        return $this->db->get()->result_array();
+    }
+
+    public function get_all_jadwal($tglsekarang)
+    {
+        $results = array();
+        $this->db->select('a.id as idjadwal, c.id as iduser, a.id as id, d.id as idposyandu, e.id as idjenisimunisasi, a.* , c.*, d.*, e.*');
+        $this->db->from('jadwal_imunisasi as a');
+        $this->db->join("user as c","a.id_bidan=c.id","left");
+        $this->db->join("posyandu as d","id_posyandu=d.id","left");
+        $this->db->join("jenis_imunisasi as e","a.id_jenis_imunisasi=e.id","left");
+        $this->db->where('a.tgl_imunisasi', $tglsekarang);
+        $query = $this->db->get();
+        $results = $query->result();
+        return $results;
+    }
+    
 }

@@ -21,24 +21,21 @@
 
     <!-- Page level plugin JavaScript-->
     <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url() ?>vendor/ckeditor/ckeditor.js"></script>
+    <script src="vendor/ckeditor/ckeditor.js"></script>
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/extra-libs/multicheck/multicheck.css">
-    <link href="<?= base_url() ?>assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/libs/jquery-steps/steps.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
+    <link href="assets/libs/jquery-steps/steps.css" rel="stylesheet">
+    <link href="assets/dist/css/style.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 
-
-    <!-- LEAFLET -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-    <!-- LEAFLET CONTROL SEARCH -->
-    <link rel="stylesheet" href="<?= base_url('leaflet-search/src/leaflet-search.css'); ?>" />
-    <script src="<?= base_url('leaflet-search/src/leaflet-search.js'); ?>"></script>
 </head>

@@ -104,8 +104,8 @@
                         href="<?= base_url() ?>User" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu">Dashboard</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="<?= base_url() ?>User/imunisasi" aria-expanded="false"><i
-                            class="mdi mdi-map-marker"></i><span class="hide-menu">Imunisasi</span></a></li>
+                        href="<?= base_url() ?>User/jadwalimunisasi" aria-expanded="false"><i
+                            class="mdi mdi-calendar"></i><span class="hide-menu">Jadwal Imunisasi</span></a></li>
                 <!-- <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Data Bayi Anda</span></a>
 						<ul aria-expanded="false" class="collapse  first-level">
 							<li class="sidebar-item"><a href="<?= base_url() ?>peserta_didik" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu">Data bayi</span></a></li>

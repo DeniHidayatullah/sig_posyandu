@@ -8,26 +8,44 @@
        * element that contains the map. */
 #map {
     top: 10px;
+
     height: 575px;
     width: 1200px;
 }
 
-
-.leaflet-div-icon {
-    background: transparent;
-    border: none;
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.leaflet-marker-icon .number {
-    position: relative;
-    top: -38px;
-    right: -10px;
-    font-size: 14px;
-    width: 25px;
+#floating-panel {
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #ffff;
+    padding: 5px;
+    border: 1px solid #9999;
     text-align: center;
-    color: white;
+    font-family: 'Roboto', 'sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
 }
 
+#floating-panel {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    margin-left: -180px;
+    width: 350px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+}
 
 /* #latlng {} */
 </style>
@@ -69,18 +87,39 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div id="map" style="width: 100%; height: 500px;"></div>
+                                <form action="ruteTerpendek.php" method="get">
+                                    <div class="mb-3">
+                                        <label for="dari">Dari</label>
+                                        <select name="dari" class="form-control" id="dari">
+                                            <option value="">--Pilih--</option>
+                                            <?php foreach ($kecamatan as $c) : ?>
+                                            <option value="<?= $c['nama_kecamatan'] ?>"><?= $c['nama_kecamatan'] ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ke">Ke</label>
+                                        <select name="ke" class="form-control" id="ke">
+                                            <option value="">--Pilih--</option>
+                                            <?php foreach ($kecamatan as $c) : ?>
+                                            <option value="<?= $c['nama_kecamatan'] ?>"><?= $c['nama_kecamatan'] ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Cari</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <!-- End Container fluid  -->
 
             <!-- footer -->
-            <footer class="footer text-center" style="margin-top: 10px;">
-                COPYRIGHT © 2022
+            <footer class="footer text-center" style="margin-top: 30px;">
+                COPYRIGHT © BIKEA TECHNOCRAFT 2021
             </footer>
             <!-- End footer -->
         </div>
@@ -111,67 +150,9 @@
     <script src="<?= base_url() ?>assets/libs/flot/jquery.flot.stack.js"></script>
     <script src="<?= base_url() ?>assets/libs/flot/jquery.flot.crosshair.js"></script>
     <script src="<?= base_url() ?>assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script src="https://unpkg.com/leaflet-extra-markers@1.2.1/dist/js/leaflet.extra-markers.js"></script>
+    <script src="<?= base_url() ?>assets/dist/js/pages/chart/chart-page-init.js"></script>
     <script>
-    var map = L.map('map').setView([-8.0120475, 113.8296833], 13);
-    L.tileLayer(
-        'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1
-        }).addTo(map);
-
-    L.NumberedDivIcon = L.Icon.extend({
-        options: {
-            // EDIT THIS TO POINT TO THE FILE AT http://www.charliecroom.com/marker_hole.png (or your own marker)
-            iconUrl: '<?=base_url('icon/map.svg');?>',
-            number: '',
-            shadowUrl: null,
-            iconSize: new L.Point(45, 40),
-            iconAnchor: new L.Point(13, 41),
-            popupAnchor: new L.Point(0, -33),
-            /*
-            iconAnchor: (Point)
-            popupAnchor: (Point)
-            */
-            className: 'leaflet-div-icon'
-        },
-
-        createIcon: function() {
-            var div = document.createElement('div');
-            var img = this._createImg(this.options['iconUrl']);
-            var numdiv = document.createElement('div');
-            numdiv.setAttribute("class", "number");
-            numdiv.innerHTML = this.options['number'] || '';
-            div.appendChild(img);
-            div.appendChild(numdiv);
-            this._setIconStyles(div, 'icon');
-            return div;
-        },
-
-        //you could change this to add a shadow like in the normal marker if you really wanted
-        createShadow: function() {
-            return null;
-        }
-    });
-
-    <?php foreach($titik as $key => $value) { ?>
-
-    L.marker([<?= $value->latitude; ?>, <?= $value->longitude; ?>], {
-            icon: new L.NumberedDivIcon({
-                number: '<?= $value->nama_simpul; ?>'
-            })
-        })
-        .bindPopup(
-            "<h5><b>Nama Titik : <?= $value->nama_simpul; ?>"
-        )
-        .addTo(map);
-
-    <?php } ?>
     </script>
-
     <script>
     $('[data-toggle="tooltip"]').tooltip();
     $(".preloader").fadeOut();

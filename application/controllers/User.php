@@ -6,13 +6,6 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('M_mapel');
-        // $this->load->model('M_peserta_didik');
-        // $this->load->model('M_Gtk');
-        // $this->load->model('M_rombel');
-		$this->load->library('form_validation');
-		$this->load->library('upload');
-		$this->load->helper(array('form', 'url'));
         $this->load->model('M_map');
 		
 		if($this->session->userdata('role') == null){
@@ -48,9 +41,30 @@ class User extends CI_Controller
         $this->load->view('User/index');
     }       
 
-    public function imunisasi()
+    public function jadwalimunisasi()
     {
-        $this->load->view('User/maps');
+        
+        // $data['jarak'] = $this->M_map->get_all_jarak();
+        // $data['kecamatan'] = $this->M_map->get_all_kecamatan();
+        $tglsekarang    =date("Y-m-d");
+        $data['jadwalimunisasi'] = $this->M_map->get_all_jadwal($tglsekarang );
+        // var_dump($data);
+        // die;
+        
+        // $data['jadwalimunisasi'] = $this->db->query("SELECT a.id as idjadwal, c.id as iduser, a.id as id, d.id as idposyandu, e.id as idjenisimunisasi, a.* , c.*, d.*, e.* FROM jadwal_imunisasi a join user c on a.id_bidan=c.id join posyandu d on a.id_posyandu=d.id join jenis_imunisasi e on a.id_jenis_imunisasi=e.id WHERE a.tgl_imunisasi=$tglsekarang")->row();
+        
+        $data['titik'] = $this->M_map->get_all_data();
+        $data['rute'] = $this->db->query("SELECT b.latitude as latawal, b.longitude as longawal , c.latitude as lattujuan, c.longitude as longtujuan , a.* FROM rute a JOIN titik_simpul b ON a.id_titik_awal=b.id JOIN titik_simpul c ON a.id_titik_tujuan=c.id ")->result();;
+        // redirect(site_url('djikstra'));
+        $this->load->view('User/jadwalimunisasi',$data);
+    }
+
+    public function rute()
+    {
+        $data['jarak'] = $this->M_map->get_all_jarak();
+        $data['ke'] = $this->input->post('ke');
+        $data['dari'] = $this->input->post('dari');
+        $this->load->view('User/RunTest',$data);
     }
 
     public function lokasi_anda()
