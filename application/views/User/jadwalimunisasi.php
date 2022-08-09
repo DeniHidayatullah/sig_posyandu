@@ -42,7 +42,8 @@
                     foreach ($jadwalimunisasi as $i) : ?>
                     <div class="col-md-6 col-lg-3 col-xlg-3">
                         <div class="card card-hover">
-                            <a href="user" class="small-box-footer text-white">
+                            <a href="<?php echo base_url() . 'User/rute/'.$i->idposyandu ?>"
+                                class="small-box-footer text-white">
                                 <div style="height: 165px;" class="box bg-purple text-center">
                                     <h5 class="text-white">Nama Posyandu : <?= $i->nama_posyandu ?> </h5>
                                     <h5 class="text-white">Jam Buka : <?= $i->jam ?> </h5>

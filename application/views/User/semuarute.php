@@ -57,7 +57,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Rute Terdeket Menuju Posyandu</h4>
+                        <h4 class="page-title">Data Balita</h4>
                         <div class="ml-auto text-right">
                         </div>
                     </div>
@@ -69,13 +69,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="<?php echo base_url('User/ruteterdekat'); ?>" method="post"
-                                    enctype="multipart/form-data">
-                                    <input type="hidden" class="form-control" name="result" type="text" id="result">
-                                    <input type="hidden" class="form-control" name="idpos" type="text"
-                                        value="<?= $idpos ?>">
-                                    <button type="submit" class="btn btn-success">Cek Rute
-                                        Terdekat</button>
+                                <input class="form-control" type="text" id="result">
                             </div>
                         </div>
                     </div>
@@ -199,7 +193,7 @@
 
     var polyline2 = L.polyline(latlngs2, {
         color: 'blue'
-    }).bindPopup('<b>Jalur</b>').addTo(map);
+    }).bindPopup('<b>Jalur 2</b>').addTo(map);
     <?php } ?>
     </script>
 
@@ -268,14 +262,35 @@
                     nodes.enqueue(vertex, Infinity);
                 }
                 previous[vertex] = null;
+
+                console.log("\n\nvertex\n", vertex === start, vertex, start,
+                    "\n\nNodes\n", nodes.values,
+                    "\n\ndistance\n", distances,
+                    "\n\nprevious\n", previous);
             }
             // ===================================== a
+
+
 
             // menentukan panjang path yg dikunjungi
             // ===================================== b
             while (nodes.values.length) {
+                // ===================================== b
+
+                console.log("\n\nWhile\n===================================================");
+                console.log("\n\nnode value\n", nodes.values.length, Boolean(nodes.values.length));
+
                 // ===================================== c
                 smallest = nodes.dequeue().val;
+                // ===================================== c
+
+
+                console.log("\n\nNodes=======================\n", nodes)
+                console.log("\n\nsmallest\n", smallest === finish, smallest, finish)
+                console.log("\n\nPrevious\n", previous)
+                console.log("\n\ndistances\n", distances)
+                console.log("\n\nadjacencyList\n", this.adjacencyList)
+
                 // ===================================== d
                 if (smallest === finish) {
                     // selesai sampai tujuan mengembalikan nilai terekhir
@@ -283,6 +298,7 @@
                         path.push(smallest);
                         smallest = previous[smallest];
                     }
+                    console.log("break====================================");
                     break;
                 }
                 // ===================================== d
@@ -305,6 +321,9 @@
                     }
                 }
             }
+            console.log("=====================", path)
+            console.log(nodes.values);
+            console.log(path, smallest);
             return path.concat(smallest).reverse();
         }
     }
@@ -313,7 +332,7 @@
     const graph = new WeightedGraph();
 
     <?php foreach($titikdjikstra as $key => $d) { ?>
-    graph.addVertex("<?= $d['id']?>");
+    graph.addVertex("<?= $d['nama_simpul']?>");
     <?php 
     }?>
 
@@ -325,9 +344,7 @@
 
     // console.log(graph.adjacencyList);
     // 3. 
-    // const hasil = graph.Dijkstra("<?= $titikuser->namatitikuser;?>", "<?= $titikposyandu->namatitikposyandu;?>");
-    const hasil = graph.Dijkstra("<?= $titikuser->idtitikuser;?>", "<?= $titikposyandu->idtitikposyandu;?>");
-    // const hasil = graph.Dijkstra("49", "48");
+    const hasil = graph.Dijkstra("A", "L");
     result.value = hasil;
     // hasil [ 'A', 'B', 'D' ]
     </script>

@@ -31,16 +31,16 @@ class M_map extends CI_Model
         $this->db->from('rute');
         return $this->db->get()->result();
     }
-    public function get_all_jarak()
+    public function get_all_rutedjikstra()
     {
         $this->db->select('*');
-        $this->db->from('jarak');
+        $this->db->from('rute');
         return $this->db->get()->result_array();
     }
-    public function get_all_kecamatan()
+    public function get_all_titik()
     {
         $this->db->select('*');
-        $this->db->from('kecamatan');
+        $this->db->from('titik_simpul');
         return $this->db->get()->result_array();
     }
 

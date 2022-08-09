@@ -58,38 +58,16 @@ class User extends CI_Controller
         $this->load->view('User/jadwalimunisasi',$data);
     }
 
-    public function rute($idposyandu)
+    public function rute()
     {
-        
-        $iduser = $this->session->userdata('iduser');
-        $data['titikuser'] = $this->db->query("SELECT b.nama_simpul as namatitikuser, b.id as idtitikuser FROM user a JOIN titik_simpul b ON a.id_titik=b.id WHERE a.id = $iduser")->row();
-        $data['titikposyandu'] = $this->db->query("SELECT b.nama_simpul as namatitikposyandu, b.id as idtitikposyandu FROM posyandu a JOIN titik_simpul b ON a.id_titik=b.id WHERE a.id = $idposyandu")->row();
-
-        $data['idpos'] = $idposyandu;
         
         $data['rutedjikstra'] = $this->M_map->get_all_rutedjikstra();
         $data['titikdjikstra'] = $this->M_map->get_all_titik();
         $data['titik'] = $this->M_map->get_all_data();
         $data['rute'] = $this->db->query("SELECT b.latitude as latawal, b.longitude as longawal , c.latitude as lattujuan, c.longitude as longtujuan , a.* FROM rute a JOIN titik_simpul b ON a.id_titik_awal=b.id JOIN titik_simpul c ON a.id_titik_tujuan=c.id ")->result();
+        // $data['ke'] = $this->input->post('ke');
+        // $data['dari'] = $this->input->post('dari');
         $this->load->view('User/rute',$data);
-    }
-
-    public function ruteterdekat()
-    {
-        
-        $iduser = $this->session->userdata('iduser');
-        $data['titikuser'] = $this->db->query("SELECT * FROM user a JOIN titik_simpul b ON a.id_titik=b.id WHERE a.id = $iduser")->row();
-        
-        
-        $idposyandu = $this->input->post('idpos');
-        $data['titikposyandu'] = $this->db->query("SELECT * FROM posyandu a JOIN titik_simpul b ON a.id_titik=b.id WHERE a.id = $idposyandu")->row();
-
-        $cekrute = $this->input->post('result');
-        $data['ruteterdekat'] = $this->db->query("SELECT * FROM `titik_simpul` WHERE id in ($cekrute)")->result();
-
-        $data['rute'] = $this->db->query("SELECT b.latitude as latawal, b.longitude as longawal , c.latitude as lattujuan, c.longitude as longtujuan , a.* FROM rute a JOIN titik_simpul b ON a.id_titik_awal=b.id JOIN titik_simpul c ON a.id_titik_tujuan=c.id where c.id in ($cekrute)  ")->result();
-
-        $this->load->view('User/ruteterdekat',$data);
     }
 
     public function lokasi_anda()

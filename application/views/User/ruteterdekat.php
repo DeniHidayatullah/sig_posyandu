@@ -28,6 +28,24 @@
     color: white;
 }
 
+.icon2 {
+    position: relative;
+    right: -10px;
+    font-size: 14px;
+    width: 25px;
+    text-align: center;
+    color: white;
+}
+
+.icon {
+    position: relative;
+    right: -10px;
+    font-size: 14px;
+    width: 25px;
+    text-align: center;
+    color: white;
+}
+
 
 /* #latlng {} */
 </style>
@@ -66,19 +84,6 @@
             <!-- Container fluid  -->
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <form action="<?php echo base_url('User/ruteterdekat'); ?>" method="post"
-                                    enctype="multipart/form-data">
-                                    <input type="hidden" class="form-control" name="result" type="text" id="result">
-                                    <input type="hidden" class="form-control" name="idpos" type="text"
-                                        value="<?= $idpos ?>">
-                                    <button type="submit" class="btn btn-success">Cek Rute
-                                        Terdekat</button>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
@@ -170,7 +175,8 @@
         }
     });
 
-    <?php foreach($titik as $key => $value) { ?>
+
+    <?php foreach($ruteterdekat as $key => $value) { ?>
     L.marker([<?= $value->latitude; ?>, <?= $value->longitude; ?>], {
             icon: new L.NumberedDivIcon({
                 number: '<?= $value->nama_simpul; ?>'
@@ -201,136 +207,45 @@
         color: 'blue'
     }).bindPopup('<b>Jalur</b>').addTo(map);
     <?php } ?>
+
+
+    var icon1 = L.icon({
+        iconUrl: '<?= base_url('icon/icon-marker.png'); ?>',
+
+        shadowUrl: null,
+        iconSize: new L.Point(45, 40),
+        iconAnchor: new L.Point(13, 41),
+        popupAnchor: new L.Point(0, -33),
+        className: 'icon'
+    });
+
+    L.marker([<?= $titikuser->latitude; ?>, <?= $titikuser->longitude; ?>], {
+            icon: icon1
+        })
+        .bindPopup(
+            "<h5><b>Lokasi : <?= $titikuser->nama_simpul; ?>"
+        )
+        .addTo(map);
+
+    var icon2 = L.icon({
+        iconUrl: '<?= base_url('icon/marker-icon.png'); ?>',
+
+        shadowUrl: null,
+        iconSize: new L.Point(45, 40),
+        iconAnchor: new L.Point(13, 41),
+        popupAnchor: new L.Point(0, -33),
+        className: 'icon2'
+    });
+
+    L.marker([<?= $titikposyandu->latitude; ?>, <?= $titikposyandu->longitude; ?>], {
+            icon: icon2
+        })
+        .bindPopup(
+            "<h5><b>Lokasi : <?= $titikposyandu->nama_simpul; ?>"
+        )
+        .addTo(map);
     </script>
 
-    <script>
-    // membuat queue untuk keluar masuknya vertex / node
-    class PriorityQueue {
-        constructor() {
-            this.values = [];
-        }
-        //   menambah queue
-        enqueue(val, priority) {
-            this.values.push({
-                val,
-                priority
-            });
-            this.sort();
-        }
-        //  menghapus atau mengeluarkan queue
-        dequeue() {
-            return this.values.shift();
-        }
-        //   mensorting queue yg lebih pendek
-        sort() {
-            console.log("1", this.values);
-            this.values.sort((a, b) => a.priority - b.priority);
-            console.log("2", this.values, "\n\n\n");
-        }
-    }
-
-    //  membuat graph untuk short path djikstra
-    class WeightedGraph {
-        constructor() {
-            this.adjacencyList = {};
-        }
-        // function membuat vertex tempat  destinasi
-        addVertex(vertex) {
-            if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
-        }
-        //    function membuat edge dan panjang jarak penghubung ke vertex lain
-        addEdge(vertex1, vertex2, weight) {
-            this.adjacencyList[vertex1].push({
-                node: vertex2,
-                weight
-            });
-            this.adjacencyList[vertex2].push({
-                node: vertex1,
-                weight
-            });
-        }
-        //   Short-Path
-        Dijkstra(start, finish) {
-            const nodes = new PriorityQueue();
-            const distances = {};
-            const previous = {};
-            let path = []; // tempat menembalikan nodes terakhir
-            let smallest;
-
-            // ===================================== a
-            // membangun initial state
-            for (let vertex in this.adjacencyList) {
-                if (vertex === start) {
-                    distances[vertex] = 0;
-                    nodes.enqueue(vertex, 0);
-                } else {
-                    distances[vertex] = Infinity;
-                    nodes.enqueue(vertex, Infinity);
-                }
-                previous[vertex] = null;
-            }
-            // ===================================== a
-
-            // menentukan panjang path yg dikunjungi
-            // ===================================== b
-            while (nodes.values.length) {
-                // ===================================== c
-                smallest = nodes.dequeue().val;
-                // ===================================== d
-                if (smallest === finish) {
-                    // selesai sampai tujuan mengembalikan nilai terekhir
-                    while (previous[smallest]) {
-                        path.push(smallest);
-                        smallest = previous[smallest];
-                    }
-                    break;
-                }
-                // ===================================== d
-
-                if (smallest || distances[smallest] !== Infinity) {
-                    for (let neighbor in this.adjacencyList[smallest]) {
-                        //  mencari tetangga dari node
-                        let nextNode = this.adjacencyList[smallest][neighbor];
-                        //menjumlah tetangga node
-                        let candidate = distances[smallest] + nextNode.weight;
-                        let nextNeighbor = nextNode.node;
-                        if (candidate < distances[nextNeighbor]) {
-                            //update jarak terkecil antara node  dan tetangga
-                            distances[nextNeighbor] = candidate;
-                            //update previous - mendapatkan jarak antar tetanggaa sebelumnya
-                            previous[nextNeighbor] = smallest;
-                            //enqueue hasil queue dengan hasil yg baru
-                            nodes.enqueue(nextNeighbor, candidate);
-                        }
-                    }
-                }
-            }
-            return path.concat(smallest).reverse();
-        }
-    }
-
-    // inisialisasi graph
-    const graph = new WeightedGraph();
-
-    <?php foreach($titikdjikstra as $key => $d) { ?>
-    graph.addVertex("<?= $d['id']?>");
-    <?php 
-    }?>
-
-    <?php foreach($rutedjikstra as $key => $d) { ?>
-    graph.addEdge("<?= $d['id_titik_awal']?>", "<?= $d['id_titik_tujuan']?>", <?= $d['nilai']?>);
-    <?php 
-    }?>
-
-
-    // console.log(graph.adjacencyList);
-    // 3. 
-    // const hasil = graph.Dijkstra("<?= $titikuser->namatitikuser;?>", "<?= $titikposyandu->namatitikposyandu;?>");
-    const hasil = graph.Dijkstra("<?= $titikuser->idtitikuser;?>", "<?= $titikposyandu->idtitikposyandu;?>");
-    // const hasil = graph.Dijkstra("49", "48");
-    result.value = hasil;
-    // hasil [ 'A', 'B', 'D' ]
-    </script>
     <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
 
     <script>

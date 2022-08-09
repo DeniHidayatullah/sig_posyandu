@@ -69,13 +69,19 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="<?php echo base_url('User/ruteterdekat'); ?>" method="post"
-                                    enctype="multipart/form-data">
-                                    <input type="hidden" class="form-control" name="result" type="text" id="result">
-                                    <input type="hidden" class="form-control" name="idpos" type="text"
-                                        value="<?= $idpos ?>">
-                                    <button type="submit" class="btn btn-success">Cek Rute
-                                        Terdekat</button>
+                                <?php  
+                                // $t = '<input class="form-control" type="text" id="result">';
+                                // echo $t;
+                                $data = $this->db->query("SELECT * FROM `titik_simpul` WHERE id in (49,1,25,26,36,48)")->result();
+                                // var_dump($data);
+                                // die;
+                                foreach ($data as $ia) : ?>
+                                <h5 class="text-black">Nama Posyandu : <?= $ia->id ?> </h5>
+                                <?php endforeach; ?>
+                                <input class="form-control" type="text" value="<?= $titikuser->namatitikuser;?>">
+                                <input class="form-control" type="text"
+                                    value="<?= $titikposyandu->namatitikposyandu;?>">
+                                <input class="form-control" type="text" id="result">
                             </div>
                         </div>
                     </div>
@@ -199,7 +205,7 @@
 
     var polyline2 = L.polyline(latlngs2, {
         color: 'blue'
-    }).bindPopup('<b>Jalur</b>').addTo(map);
+    }).bindPopup('<b>Jalur 2</b>').addTo(map);
     <?php } ?>
     </script>
 
