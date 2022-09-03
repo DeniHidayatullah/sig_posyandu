@@ -17,7 +17,7 @@
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-warning">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-info">
             <div id="loginform">
                 <div class="text-center p-t-20 p-b-20">
                     <h4 class="text-center p-t-20 p-b-20" style="color:#fff;">SIG - POSYANDU</h4>
