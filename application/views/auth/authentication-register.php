@@ -17,7 +17,7 @@
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-warning">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-info">
             <div id="loginform">
                 <div class="text-center p-t-20 p-b-20">
                     <h4 class="text-center p-t-20 p-b-20" style="color:#fff;">SIG - POSYANDU</h4>
@@ -97,17 +97,18 @@
                             <?= form_error('foto_ktp', '<small class="text-danger pl-3">', '</small>'); ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span id="basic-addon1"><button class="btn btn-primary" type="button"
-                                            onclick="getLocation()">Cek Lokasi</button></i></span>
+                                    <span id="basic-addon1" class="btn btn-primary" onclick="getLocation()">Cek
+                                        Lokasi</i></span>
                                 </div>
                                 <input class="form-control " placeholder="Longitude.." type="text" name="longitude"
-                                    id="longitude" readonly>
+                                    id="longitude">
                                 <input class="form-control " placeholder="Latitude" type="text" name="latitude"
-                                    id="latitude" readonly>
+                                    id="latitude">
                             </div>
                         </div>
                         <div class="col-12">
-                            <div id="mapcanvas"></div>
+                            <!-- <div id="mapcanvas"></div> -->
+                            <div id="map" style="width: 100%; height: 500px;"></div>
                         </div>
                     </div>
                     <div class="row border-top border-secondary">
@@ -173,8 +174,9 @@
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?= base_url() ?>assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="<?= base_url() ?>assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="http://maps.google.com/maps/api/js"></script>
-    <script>
+    <script src="https://unpkg.com/leaflet-extra-markers@1.2.1/dist/js/leaflet.extra-markers.js"></script>
+    <!-- <script src="http://maps.google.com/maps/api/js"></script> -->
+    <!-- <script>
     var view = document.getElementById("tampilkan");
 
     function getLocation() {
@@ -225,6 +227,47 @@
                 break;
         }
     }
+    </script> -->
+    <script>
+    var curLocation = [0, 0];
+    if (curLocation[0] == 0 && curLocation[1] == 0) {
+        curLocation = [-8.0120475, 113.8296833];
+    }
+    var map = L.map('map').setView([-8.0120475, 113.8296833], 13);
+
+    L.tileLayer(
+        'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(map);
+
+    map.attributionControl.setPrefix(false);
+
+    var marker = new L.marker(curLocation, {
+        draggable: 'true'
+    });
+
+    marker.on('dragend', function(event) {
+        var position = marker.getLatLng();
+        marker.setLatLng(position, {
+            draggable: 'true'
+        }).bindPopup(position).update();
+        $('#latitude').val(position.lat);
+        $('#longitude').val(position.lng).keyup();
+    })
+
+    $('#latitude, #longitude').change(function() {
+        var position = [parseInt($('#latitude').val()), parseInt($('#longitude').val())];
+        marker.setLatLng(position, {
+            draggable: 'true'
+        }).bindPopup(position).update();
+        map.panTo(position);
+    });
+
+    map.addLayer(marker);
     </script>
     <!-- ============================================================== -->
     <!-- This page plugin js -->

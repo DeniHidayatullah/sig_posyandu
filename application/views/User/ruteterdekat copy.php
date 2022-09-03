@@ -175,6 +175,39 @@
         }
     });
 
+
+    // <?php foreach ($ruteterdekat as $key => $value) { ?>
+    // L.marker([<?= $value->latitude; ?>, <?= $value->longitude; ?>], {
+    //         icon: new L.NumberedDivIcon({
+    //             number: '<?= $value->nama_simpul; ?>'
+    //         })
+    //     })
+    //     .bindPopup(
+    //         "<h5><b>Nama Titik : <?= $value->nama_simpul; ?>"
+    //     )
+    //     .addTo(map);
+
+    // <?php } ?>//kalau dikasi titik jalur
+
+    // <?php foreach ($rute as $key => $valuee) { ?>
+    // var routeControl = L.Routing.control({
+    //     waypoints: [
+    //         L.latLng(<?= $valuee->latawal; ?>, <?= $valuee->longawal; ?>),
+    //         L.latLng(<?= $valuee->lattujuan; ?>, <?= $valuee->longtujuan; ?>)
+    //     ],
+    //     routeWhileDragging: false,
+    // }).addTo(map);
+
+    // var latlngs2 = [
+    //     L.latLng(<?= $valuee->latawal; ?>, <?= $valuee->longawal; ?>),
+    //     L.latLng(<?= $valuee->lattujuan; ?>, <?= $valuee->longtujuan; ?>)
+    // ];
+
+    // var polyline2 = L.polyline(latlngs2, {
+    //     color: 'blue'
+    // }).bindPopup('<b>Jalur</b>').addTo(map);// kalau djiktra asli
+    // <?php } ?>
+
     var routeControl = L.Routing.control({
         createMarker: function() {
             return null;

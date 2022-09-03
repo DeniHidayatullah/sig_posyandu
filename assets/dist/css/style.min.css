@@ -11256,22 +11256,22 @@ html[dir=ltr] body .p-l-0 {
 #main-wrapper {}
 
 #main-wrapper .topbar .top-navbar .navbar-header[data-logobg=skin5] {
-    background: #ffc107
+    background: #007bff
 }
 
 #main-wrapper .topbar .navbar-collapse[data-navbarbg=skin5],
 #main-wrapper .topbar[data-navbarbg=skin5] {
-    background: #ffc107
+    background: #007bff
 }
 
 #main-wrapper .left-sidebar[data-sidebarbg=skin5],
 #main-wrapper .left-sidebar[data-sidebarbg=skin5] ul {
-    background: #ffc107
+    background: #007bff
 }
 
 #main-wrapper .left-sidebar[data-sidebarbg=skin5] .create-btn,
 #main-wrapper .left-sidebar[data-sidebarbg=skin5] ul .create-btn {
-    background: #ffc107
+    background: #007bff
 }
 
 #main-wrapper {
@@ -12030,7 +12030,7 @@ ul.list-style-none li a:hover {
 }
 
 #navbarSupportedContent {
-    background: #ffc107 !important
+    background: #007bff !important
 }
 
 .search-box .app-search {

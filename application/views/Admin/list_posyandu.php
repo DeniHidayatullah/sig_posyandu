@@ -64,8 +64,8 @@
                             <div class="card-body">
                                 <div class="form-gruop">
                                     <div class="text-left">
-                                        <a href="<?php echo base_url() . 'Admin/addBidan' ?>" class="btn btn-success"><i
-                                                class="fas fa-plus fa-sm text-white"></i>
+                                        <a href="<?php echo base_url() . 'Admin/addPosyandu' ?>"
+                                            class="btn btn-success"><i class="fas fa-plus fa-sm text-white"></i>
                                             Tambah Posyandu</a>
                                     </div>
                                 </div><br>
@@ -91,13 +91,13 @@
                                                 <td><?= $p->penanggung_jawab ?></td>
                                                 <td>
                                                     <a type="button"
-                                                        href="<?= base_url('Admin/updatePosyandu/'. $p->id);   ?>"
+                                                        href="<?= base_url('Admin/updatePosyandu/' . $p->id);   ?>"
                                                         data-toggle="tooltip" data-placement="top" title=""
                                                         data-original-title="Edit Data"
                                                         class="mdi mdi-24px mdi-pencil"></a>
 
                                                     <a type="button"
-                                                        href="<?= base_url('Admin/deletePosyandu/'. $p->id);   ?>"
+                                                        href="<?= base_url('Admin/deletePosyandu/' . $p->id);   ?>"
                                                         onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');"
                                                         data-toggle="tooltip" data-placement="top" title=""
                                                         data-original-title="Hapus"

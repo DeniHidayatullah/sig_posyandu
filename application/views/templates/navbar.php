@@ -163,6 +163,21 @@
                             class="mdi mdi-table"></i><span class="hide-menu">Jadwal Imunisasi</span></a>
                 </li>
 
+                <!-- <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                        href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-map"></i><span
+                            class="hide-menu">
+                            Rute Lokasi</span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Lokasi" class="sidebar-link"><i
+                                    class="mdi mdi-map-marker"></i><span class="hide-menu">Lokasi</span></a></li>
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Titiksimpul" class="sidebar-link"><i
+                                    class="mdi mdi-map-marker-plus"></i><span class="hide-menu">Titik
+                                    Simpul</span></a></li>
+                        <li class="sidebar-item"><a href="<?= base_url() ?>Admin/Rute" class="sidebar-link"><i
+                                    class="mdi mdi-ruler"></i><span class="hide-menu">Rute</span></a>
+                        </li>
+                    </ul>
+                </li> -->
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="<?= base_url() ?>Admin/laporanImunisasi" aria-expanded="false"><i
                             class="mdi mdi-printer"></i><span class="hide-menu">Laporan Imunisasi</span></a>
