@@ -257,8 +257,6 @@ class Admin extends CI_Controller
 			'id_balita' => htmlspecialchars($this->input->post('id_balita')),
 			'id_posyandu' => htmlspecialchars($this->input->post('id_posyandu')),
 			'id_bidan' => htmlspecialchars($this->input->post('id_bidan')),
-			'longitude' => $this->input->post('longitude'),
-			'latitude' => $this->input->post('latitude'),
 			'id_jenis_imunisasi' => htmlspecialchars($this->input->post('id_jenis_imunisasi'))
 		];
 		$this->db->insert('imunisasi', $data);
