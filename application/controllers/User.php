@@ -74,7 +74,8 @@ class User extends CI_Controller
         $this->load->view('User/rute', $data);
     }
 
-    public function ruteterdekat()
+    // public function ruteterdekat()
+    public function ruteterdekat($idposyandu)
     {
 
         $iduser = $this->session->userdata('iduser');
@@ -83,7 +84,7 @@ class User extends CI_Controller
         // var_dump($data['titikuser']);
         // die;
 
-        $idposyandu = $this->input->post('idpos');
+        // $idposyandu = $this->input->post('idpos');
         // $data['titikposyandu'] = $this->db->query("SELECT * FROM posyandu a JOIN titik_simpul b ON a.id_titik=b.id WHERE a.id = $idposyandu")->row();
         $data['titikposyandu'] = $this->db->query("SELECT * FROM posyandu where id = $idposyandu")->row();
 
